@@ -29,4 +29,7 @@ func get_input():
 	
 func _physics_process(delta):
 	get_input()
-	move_and_slide()
+	var collision_info = move_and_collide(velocity * delta)
+	if collision_info:#PARA TESTE, RETIRAR DEPOIS
+		var collision_point = collision_info.get_position()
+		print(collision_point)
