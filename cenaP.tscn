@@ -41,3 +41,5 @@ texture = ExtResource("3_rimhs")
 visibility_layer = 9
 position = Vector2(851.25, 221.75)
 shape = SubResource("RectangleShape2D_2y7k1")
+
+[node name="StaticBody2D" type="StaticBody2D" parent="." unique_id=2116791275]
