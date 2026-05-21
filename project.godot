@@ -49,6 +49,7 @@ Baixo={
 2d_render/layer_3="Itens"
 2d_render/layer_4="Paredes "
 2d_render/layer_5="Plataformas"
+2d_render/layer_6="Obstáculos"
 2d_physics/layer_1="Jogador"
 2d_physics/layer_2="Inimigos"
 2d_physics/layer_3="Paredes"

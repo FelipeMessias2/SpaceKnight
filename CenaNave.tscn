@@ -1,0 +1,39 @@
+[gd_scene format=3 uid="uid://bkhuxv5rom7t6"]
+
+[ext_resource type="Script" path="res://character_body_2d_nave.gd" id="1_e3idd"]
+[ext_resource type="Texture2D" uid="uid://np0fguokgqhn" path="res://Arte/Fundo.png" id="1_g3hxh"]
+[ext_resource type="Texture2D" uid="uid://8iylpqrypol6" path="res://ship-sheet.png" id="2_g3hxh"]
+[ext_resource type="PackedScene" path="res://AsteroideCena.tscn" id="4_m3yir"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_m3yir"]
+size = Vector2(104, 102)
+
+[node name="Node2D" type="Node2D" unique_id=827086504]
+position = Vector2(-109, 90)
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1368053867]
+position = Vector2(685.00006, 233.00002)
+scale = Vector2(1.1250001, 1.0733334)
+texture = ExtResource("1_g3hxh")
+
+[node name="CharacterBody2D_Nave" type="CharacterBody2D" parent="." unique_id=1078614421]
+position = Vector2(-70, 197)
+script = ExtResource("1_e3idd")
+metadata/_edit_group_ = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="CharacterBody2D_Nave" unique_id=450018162]
+position = Vector2(261, 216)
+shape = SubResource("RectangleShape2D_m3yir")
+
+[node name="Sprite2D" type="Sprite2D" parent="CharacterBody2D_Nave" unique_id=1913239847]
+position = Vector2(256.69345, 215.68997)
+rotation = 1.5707964
+scale = Vector2(3.1348379, 3.4796593)
+texture = ExtResource("2_g3hxh")
+region_enabled = true
+region_rect = Rect2(95.66324, 0, 32.33676, 32)
+
+[node name="RigidBody2D_Obstáculo" type="RigidBody2D" parent="." unique_id=757039053]
+
+[node name="RigidBody2D_Obstáculo2" parent="." unique_id=1568276614 instance=ExtResource("4_m3yir")]
+position = Vector2(-553, -248)
