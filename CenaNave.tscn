@@ -4,6 +4,7 @@
 [ext_resource type="Texture2D" uid="uid://np0fguokgqhn" path="res://Arte/Fundo.png" id="1_g3hxh"]
 [ext_resource type="Texture2D" uid="uid://8iylpqrypol6" path="res://ship-sheet.png" id="2_g3hxh"]
 [ext_resource type="PackedScene" path="res://AsteroideCena.tscn" id="4_m3yir"]
+[ext_resource type="PackedScene" uid="uid://cciuii2705wnw" path="res://CenaTiroNave.tscn" id="5_oe2ed"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_m3yir"]
 size = Vector2(104, 102)
@@ -35,5 +36,7 @@ region_rect = Rect2(95.66324, 0, 32.33676, 32)
 
 [node name="RigidBody2D_Obstáculo" type="RigidBody2D" parent="." unique_id=757039053]
 
-[node name="RigidBody2D_Obstáculo2" parent="." unique_id=1568276614 instance=ExtResource("4_m3yir")]
-position = Vector2(-553, -248)
+[node name="RigidBody2D_Obstáculo" parent="RigidBody2D_Obstáculo" unique_id=1568276614 instance=ExtResource("4_m3yir")]
+
+[node name="TiroNave_Cena" parent="." unique_id=1683016526 instance=ExtResource("5_oe2ed")]
+position = Vector2(-355, 286)
