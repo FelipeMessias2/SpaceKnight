@@ -1,9 +1,10 @@
 [gd_scene format=3 uid="uid://3ot1mi546sua"]
 
 [ext_resource type="Texture2D" uid="uid://bqlheyppq0mhg" path="res://Arte/Arte_espacial/Foozle_2DS0015_Void_EnvironmentPack/Asteroids/PNGs/Asteroid 01 - Explode.png" id="1_7q565"]
+[ext_resource type="Script" uid="uid://c5ukgfpiaooxf" path="res://asteroide_cena.gd" id="1_uvu2l"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_uvu2l"]
-radius = 17.0
+radius = 27.018513
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_7q565"]
 atlas = ExtResource("1_7q565")
@@ -69,16 +70,20 @@ animations = [{
 "speed": 5.0
 }]
 
-[node name="RigidBody2D_Obstáculo" type="RigidBody2D" unique_id=1568276614]
-position = Vector2(-60, 37)
+[node name="CharacterBody2D_Obstáculo" type="CharacterBody2D" unique_id=282668546]
+position = Vector2(388, 148)
+script = ExtResource("1_uvu2l")
+metadata/_edit_group_ = true
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=1997898074]
-position = Vector2(-320, 0)
-scale = Vector2(0.8098958, 1)
+position = Vector2(-26.500008, 44)
+scale = Vector2(1.3541677, 1.627907)
 texture = ExtResource("1_7q565")
+region_enabled = true
+region_rect = Rect2(24, 25.5, 48, 43)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=215853765]
-position = Vector2(-593, 0)
+position = Vector2(-27, 46)
 shape = SubResource("CircleShape2D_uvu2l")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=374055332]
