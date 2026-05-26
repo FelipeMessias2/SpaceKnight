@@ -1,8 +1,11 @@
 [gd_scene format=3 uid="uid://dqdr61cooeom5"]
 
 [ext_resource type="Script" uid="uid://dvnthcuuafrxj" path="res://PlayerBody.gd" id="1_34bku"]
+[ext_resource type="Script" uid="uid://n43jo6s8aj8i" path="res://cena_p.gd" id="1_vomve"]
 [ext_resource type="Texture2D" uid="uid://bv5tpmnaa0d5j" path="res://icon.svg" id="2_rimhs"]
 [ext_resource type="Texture2D" uid="uid://b6ydmmeyhqkqa" path="res://Arte/Parede/bricks/Brickwall2_Texture.png" id="3_rimhs"]
+[ext_resource type="PackedScene" uid="uid://bkhuxv5rom7t6" path="res://CenaNave.tscn" id="4_1wcgw"]
+[ext_resource type="PackedScene" uid="uid://dopooayle3rxu" path="res://GameOver.tscn" id="5_2y7k1"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_1wcgw"]
 size = Vector2(121, 110)
@@ -11,35 +14,45 @@ size = Vector2(121, 110)
 size = Vector2(259.5, 261.5)
 
 [node name="Game" type="Node2D" unique_id=307514444]
+script = ExtResource("1_vomve")
 
-[node name="CharacterBody2D_Player" type="CharacterBody2D" parent="." unique_id=508051765]
-position = Vector2(15, 135)
+[node name="LevelPrincipal" type="Node2D" parent="." unique_id=1308317790]
+
+[node name="CharacterBody2D_Player" type="CharacterBody2D" parent="LevelPrincipal" unique_id=508051765]
+position = Vector2(-58, 129)
 collision_mask = 30
 script = ExtResource("1_34bku")
 metadata/_edit_group_ = true
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="CharacterBody2D_Player" unique_id=1904926497]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="LevelPrincipal/CharacterBody2D_Player" unique_id=1904926497]
 position = Vector2(306.5, 206)
 shape = SubResource("RectangleShape2D_1wcgw")
 one_way_collision = true
 
-[node name="Sprite2D" type="Sprite2D" parent="CharacterBody2D_Player" unique_id=956320972]
+[node name="Sprite2D" type="Sprite2D" parent="LevelPrincipal/CharacterBody2D_Player" unique_id=956320972]
 position = Vector2(305, 205)
 texture = ExtResource("2_rimhs")
 
-[node name="StaticBody2D_Parede" type="StaticBody2D" parent="." unique_id=1349494895]
-position = Vector2(-38, 121)
+[node name="StaticBody2D_Parede" type="StaticBody2D" parent="LevelPrincipal" unique_id=1349494895]
+position = Vector2(-111, 115)
 collision_layer = 4
 collision_mask = 11
 metadata/_edit_group_ = true
 
-[node name="Sprite2D" type="Sprite2D" parent="StaticBody2D_Parede" unique_id=1126683811]
+[node name="Sprite2D" type="Sprite2D" parent="LevelPrincipal/StaticBody2D_Parede" unique_id=1126683811]
 position = Vector2(853, 220)
 texture = ExtResource("3_rimhs")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D_Parede" unique_id=2033552253]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="LevelPrincipal/StaticBody2D_Parede" unique_id=2033552253]
 visibility_layer = 9
 position = Vector2(851.25, 221.75)
 shape = SubResource("RectangleShape2D_2y7k1")
 
-[node name="StaticBody2D" type="StaticBody2D" parent="." unique_id=2116791275]
+[node name="LevelNave" parent="." unique_id=827086504 instance=ExtResource("4_1wcgw")]
+position = Vector2(-2141, 620)
+
+[node name="GameOver" parent="." unique_id=106510237 instance=ExtResource("5_2y7k1")]
+offset_left = -1812.0
+offset_top = 149.0
+offset_right = -1812.0
+offset_bottom = 149.0

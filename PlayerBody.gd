@@ -24,7 +24,7 @@ const JUMP_VELOCITY = -400.0
 	#move_and_slide()
 ###
 func get_input():
-	var input_direction = Input.get_vector("Esquerda", "Direita", "", "")
+	var input_direction = Input.get_vector("Esquerda", "Direita", "Cima", "Baixo")
 	velocity = input_direction * speed
 	
 func _physics_process(delta):
