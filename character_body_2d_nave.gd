@@ -17,8 +17,8 @@ func get_input():
 	
 func tomar_dano():
 	vida = vida -1
+	print(vida)
 	if(vida<1):
-		print(vida)
 		naveDestruida.emit()#para juntar as duas fases depois
 		get_tree().change_scene_to_file("res://GameOver.tscn")
 		queue_free()
@@ -29,10 +29,14 @@ func _physics_process(delta):
 	if Input.is_action_just_pressed("atirar(Nave)"):
 		atirar()
 	
-	
 	if collision_info:
+		var objeto_atingido = collision_info.get_collider() #Pega o asteroide
+		if objeto_atingido.has_method("explodir"): #Responsável por achar o método que destroi o asteroide.
+			objeto_atingido.explodir()
 		tomar_dano()
+		
 			#get_tree().change_scene("res://GameOver.tscn")
+		
 		var collision_point = collision_info.get_position()
 		#print(collision_point)
 		

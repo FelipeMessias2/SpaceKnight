@@ -17,16 +17,17 @@ position = Vector2(685.00006, 233.00002)
 scale = Vector2(1.1250001, 1.0733334)
 texture = ExtResource("1_g3hxh")
 
-[node name="CharacterBody2D_Nave" type="CharacterBody2D" parent="." unique_id=1078614421]
-position = Vector2(-70, 197)
+[node name="Nave" type="CharacterBody2D" parent="." unique_id=1078614421]
+position = Vector2(-65, 199)
+collision_mask = 33
 script = ExtResource("1_e3idd")
 metadata/_edit_group_ = true
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="CharacterBody2D_Nave" unique_id=450018162]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Nave" unique_id=450018162]
 position = Vector2(261, 216)
 shape = SubResource("RectangleShape2D_m3yir")
 
-[node name="Sprite2D" type="Sprite2D" parent="CharacterBody2D_Nave" unique_id=1913239847]
+[node name="Sprite2D" type="Sprite2D" parent="Nave" unique_id=1913239847]
 position = Vector2(256.69345, 215.68997)
 rotation = 1.5707964
 scale = Vector2(3.1348379, 3.4796593)
@@ -35,7 +36,13 @@ region_enabled = true
 region_rect = Rect2(95.66324, 0, 32.33676, 32)
 
 [node name="TiroNave_Cena" parent="." unique_id=1683016526 instance=ExtResource("5_oe2ed")]
-position = Vector2(-355, 286)
+position = Vector2(-305, 608)
 
-[node name="RigidBody2D_Obstáculo2" parent="." unique_id=1568276614 instance=ExtResource("4_m3yir")]
-position = Vector2(1230, 165)
+[node name="Asteroide" parent="." unique_id=1568276614 instance=ExtResource("4_m3yir")]
+position = Vector2(1211, 123)
+
+[node name="Label" type="Label" parent="." unique_id=1319159966]
+offset_left = -290.0
+offset_top = 330.0
+offset_right = -149.0
+offset_bottom = 383.0
