@@ -5,6 +5,7 @@ const JUMP_VELOCITY = -400.0
 const TIRO_NAVE_CENA = preload("res://CenaTiroNave.tscn") #Carrega na memória a cena do tiro
 var vida = 3
 signal naveDestruida
+signal tomouDano
 #const ASTEROIDE = preload("res://AsteroideCena.tscn") Acho que não faz sentido
 #TODO ADICIONAR MARKED2D PONTO DE TIRO, PARA DECIDIR ONDE O TIRO SAI DA NAVE
 #func _physics_process(delta: float) -> void:
@@ -17,6 +18,7 @@ func get_input():
 	
 func tomar_dano():
 	vida = vida -1
+	tomouDano.emit(vida)
 	print(vida)
 	if(vida<1):
 		naveDestruida.emit()#para juntar as duas fases depois
@@ -33,14 +35,11 @@ func _physics_process(delta):
 		var objeto_atingido = collision_info.get_collider() #Pega o asteroide
 		if objeto_atingido.has_method("explodir"): #Responsável por achar o método que destroi o asteroide.
 			objeto_atingido.explodir()
-		tomar_dano()
+			tomar_dano()
 		
-			#get_tree().change_scene("res://GameOver.tscn")
+		#var collision_point = collision_info.get_position()
 		
-		var collision_point = collision_info.get_position()
-		#print(collision_point)
-		
-
+   
 func atirar():
 	var tiro = TIRO_NAVE_CENA.instantiate()
 	get_parent().add_child(tiro) #adicionando instancia do tiro como filho da cena principal

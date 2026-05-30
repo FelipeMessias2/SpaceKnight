@@ -5,7 +5,7 @@ extends Node2D
 func _ready() -> void: 
 	$GameOver.hide()
 	#$LevelPrincipal.hide() #TODO TALVEZ DEPOIS TENHA QUE SER ASSIM PARA FAZER COM QUE A NAVE SEJA PRIMEIRA
-	$LevelNave/CharacterBody2D_Nave.naveDestruida.connect(_on_nave_Destruida)
+	$LevelNave/Nave.naveDestruida.connect(_on_nave_Destruida)
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.

@@ -49,10 +49,10 @@ position = Vector2(851.25, 221.75)
 shape = SubResource("RectangleShape2D_2y7k1")
 
 [node name="LevelNave" parent="." unique_id=827086504 instance=ExtResource("4_1wcgw")]
-position = Vector2(-2141, 620)
+position = Vector2(-1926, -63)
 
 [node name="GameOver" parent="." unique_id=106510237 instance=ExtResource("5_2y7k1")]
-offset_left = -1812.0
-offset_top = 149.0
-offset_right = -1812.0
-offset_bottom = 149.0
+offset_left = -1359.0
+offset_top = 31.0
+offset_right = -1359.0
+offset_bottom = 31.0

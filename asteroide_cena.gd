@@ -10,7 +10,6 @@ func _ready() -> void:
 func _process(delta: float) -> void:
 	position = position - transform.x * speed * delta
 
-	#TODO TALVEZ TENHA QUE TIRAR, JÁ QUE VAI VIR DE FORA DA TELA
 func _on_VisibleOnScreenNotifier2D_screen_exited() -> void: #Se o asteroide sai da tela, é destruído
 	queue_free()
 
