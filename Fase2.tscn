@@ -1,0 +1,158 @@
+[gd_scene format=3]
+
+[ext_resource type="Script" path="res://alavanca.gd" id="1_alav"]
+[ext_resource type="Script" path="res://porta.gd" id="2_port"]
+[ext_resource type="Script" path="res://zona_saida.gd" id="3_saida"]
+[ext_resource type="Script" path="res://hud_fase2.gd" id="4_hud"]
+[ext_resource type="PackedScene" path="res://Player.tscn" id="5_player"]
+[ext_resource type="PackedScene" path="res://Inimigo.tscn" id="6_inim"]
+[ext_resource type="Texture2D" path="res://Arte/Parede/bricks/Brickwall2_Texture.png" id="7_wall"]
+
+[sub_resource type="RectangleShape2D" id="rs_chao"]
+size = Vector2(1800, 40)
+
+[sub_resource type="RectangleShape2D" id="rs_plat"]
+size = Vector2(240, 24)
+
+[sub_resource type="RectangleShape2D" id="rs_parede"]
+size = Vector2(40, 700)
+
+[sub_resource type="RectangleShape2D" id="rs_porta"]
+size = Vector2(32, 140)
+
+[sub_resource type="CircleShape2D" id="cs_alav"]
+radius = 60.0
+
+[sub_resource type="RectangleShape2D" id="rs_saida"]
+size = Vector2(70, 110)
+
+[node name="Fase2" type="Node2D"]
+
+[node name="FundoParede" type="Sprite2D" parent="."]
+modulate = Color(0.42, 0.47, 0.56, 1)
+position = Vector2(700, 300)
+texture = ExtResource("7_wall")
+region_enabled = true
+region_rect = Rect2(0, 0, 2600, 900)
+texture_repeat = 2
+
+[node name="Chao" type="StaticBody2D" parent="."]
+position = Vector2(700, 600)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Chao"]
+shape = SubResource("rs_chao")
+
+[node name="Visual" type="Polygon2D" parent="Chao"]
+color = Color(0.18, 0.26, 0.38, 1)
+polygon = PackedVector2Array(-900, -20, 900, -20, 900, 20, -900, 20)
+
+[node name="Topo" type="Polygon2D" parent="Chao"]
+color = Color(0.4, 0.62, 0.8, 1)
+polygon = PackedVector2Array(-900, -20, 900, -20, 900, -15, -900, -15)
+
+[node name="Plataforma" type="StaticBody2D" parent="."]
+position = Vector2(480, 520)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Plataforma"]
+shape = SubResource("rs_plat")
+
+[node name="Visual" type="Polygon2D" parent="Plataforma"]
+color = Color(0.2, 0.29, 0.42, 1)
+polygon = PackedVector2Array(-120, -12, 120, -12, 120, 12, -120, 12)
+
+[node name="Topo" type="Polygon2D" parent="Plataforma"]
+color = Color(0.4, 0.62, 0.8, 1)
+polygon = PackedVector2Array(-120, -12, 120, -12, 120, -8, -120, -8)
+
+[node name="ParedeEsq" type="StaticBody2D" parent="."]
+position = Vector2(-80, 350)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="ParedeEsq"]
+shape = SubResource("rs_parede")
+
+[node name="Visual" type="Polygon2D" parent="ParedeEsq"]
+color = Color(0.12, 0.17, 0.25, 1)
+polygon = PackedVector2Array(-20, -350, 20, -350, 20, 350, -20, 350)
+
+[node name="Porta" type="StaticBody2D" parent="."]
+position = Vector2(820, 515)
+script = ExtResource("2_port")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Porta"]
+shape = SubResource("rs_porta")
+
+[node name="Visual" type="Polygon2D" parent="Porta"]
+color = Color(0.85, 0.2, 0.16, 1)
+polygon = PackedVector2Array(-16, -70, 16, -70, 16, 70, -16, 70)
+
+[node name="ZonaSaida" type="Area2D" parent="."]
+position = Vector2(1400, 540)
+script = ExtResource("3_saida")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="ZonaSaida"]
+shape = SubResource("rs_saida")
+
+[node name="Visual" type="Polygon2D" parent="ZonaSaida"]
+color = Color(0.13, 0.82, 0.46, 1)
+polygon = PackedVector2Array(-35, -55, 35, -55, 35, 55, -35, 55)
+
+[node name="Alavanca" type="Area2D" parent="."]
+position = Vector2(480, 488)
+script = ExtResource("1_alav")
+porta = NodePath("../Porta")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Alavanca"]
+shape = SubResource("cs_alav")
+
+[node name="Visual" type="Polygon2D" parent="Alavanca"]
+color = Color(0.95, 0.85, 0.1, 1)
+polygon = PackedVector2Array(-18, -18, 18, -18, 18, 18, -18, 18)
+
+[node name="Aviso" type="Label" parent="Alavanca"]
+offset_left = -80.0
+offset_top = -96.0
+offset_right = 80.0
+offset_bottom = -64.0
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 6
+theme_override_font_sizes/font_size = 22
+text = "Aperte  S"
+horizontal_alignment = 1
+
+[node name="Inimigo" parent="." instance=ExtResource("6_inim")]
+position = Vector2(280, 520)
+
+[node name="Inimigo2" parent="." instance=ExtResource("6_inim")]
+position = Vector2(1050, 520)
+
+[node name="Player" parent="." instance=ExtResource("5_player")]
+position = Vector2(120, 500)
+
+[node name="HUD" type="CanvasLayer" parent="."]
+script = ExtResource("4_hud")
+
+[node name="Coracao1" type="ColorRect" parent="HUD"]
+offset_left = 20.0
+offset_top = 18.0
+offset_right = 52.0
+offset_bottom = 50.0
+color = Color(0.95, 0.15, 0.2, 1)
+
+[node name="Coracao2" type="ColorRect" parent="HUD"]
+offset_left = 60.0
+offset_top = 18.0
+offset_right = 92.0
+offset_bottom = 50.0
+color = Color(0.95, 0.15, 0.2, 1)
+
+[node name="Coracao3" type="ColorRect" parent="HUD"]
+offset_left = 100.0
+offset_top = 18.0
+offset_right = 132.0
+offset_bottom = 50.0
+color = Color(0.95, 0.15, 0.2, 1)
+
+[connection signal="body_entered" from="ZonaSaida" to="ZonaSaida" method="_on_body_entered"]
+[connection signal="body_entered" from="Alavanca" to="Alavanca" method="_on_body_entered"]
+[connection signal="body_exited" from="Alavanca" to="Alavanca" method="_on_body_exited"]
