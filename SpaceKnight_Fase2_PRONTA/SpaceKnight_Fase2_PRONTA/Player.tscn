@@ -1,0 +1,33 @@
+[gd_scene format=3]
+
+[ext_resource type="Script" path="res://player_fase2.gd" id="1_p"]
+[ext_resource type="Texture2D" path="res://icon.svg" id="2_p"]
+
+[sub_resource type="CapsuleShape2D" id="cap_p"]
+radius = 18.0
+height = 50.0
+
+[sub_resource type="RectangleShape2D" id="rect_atk"]
+size = Vector2(44, 34)
+
+[node name="Player" type="CharacterBody2D"]
+script = ExtResource("1_p")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("cap_p")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(0.4, 0.4)
+texture = ExtResource("2_p")
+
+[node name="HitboxAtaque" type="Area2D" parent="."]
+position = Vector2(42, 0)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HitboxAtaque"]
+shape = SubResource("rect_atk")
+disabled = true
+
+[node name="Camera2D" type="Camera2D" parent="."]
+zoom = Vector2(1.8, 1.8)
+
+[connection signal="body_entered" from="HitboxAtaque" to="." method="_on_hitbox_ataque_body_entered"]
