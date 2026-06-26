@@ -22,7 +22,7 @@ func tomar_dano():
 	print(vida)
 	if(vida<1):
 		naveDestruida.emit()#para juntar as duas fases depois
-		get_tree().change_scene_to_file("res://GameOver.tscn")
+		get_tree().change_scene_to_file("res://Fase2.tscn")
 		queue_free()
 		
 func _physics_process(delta):
