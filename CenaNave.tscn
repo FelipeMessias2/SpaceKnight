@@ -7,27 +7,10 @@
 [ext_resource type="PackedScene" uid="uid://3ot1mi546sua" path="res://AsteroideCena.tscn" id="4_m3yir"]
 [ext_resource type="PackedScene" uid="uid://cciuii2705wnw" path="res://CenaTiroNave.tscn" id="5_oe2ed"]
 [ext_resource type="PackedScene" uid="uid://dopooayle3rxu" path="res://GameOver.tscn" id="7_aj3mx"]
+[ext_resource type="Script" uid="uid://b7bjwl061cyfl" path="res://hud_fase2.gd" id="8_j5bp8"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_m3yir"]
 size = Vector2(104, 102)
-
-[sub_resource type="GDScript" id="GDScript_aj3mx"]
-script/source = "extends Label
-
-
-# Called when the node enters the scene tree for the first time.
-func _ready() -> void:
-	pass # Replace with function body.
-
-
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta: float) -> void:
-	pass
-
-
-func _on_nave_tomou_dano() -> void:
-	pass # Replace with function body.
-"
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_aj3mx"]
 size = Vector2(115.5, 1.0500022)
@@ -74,18 +57,6 @@ position = Vector2(-305, 608)
 [node name="Asteroide" parent="." unique_id=1568276614 instance=ExtResource("4_m3yir")]
 position = Vector2(1211, 123)
 
-[node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=479818344]
-scale = Vector2(2, 2)
-transform = Transform2D(2, 0, 0, 2, 0, 0)
-
-[node name="Label" type="Label" parent="CanvasLayer" unique_id=1319159966]
-offset_left = 1.0
-offset_top = 0.5
-offset_right = 95.5
-offset_bottom = 23.5
-text = "VIDAS: 3"
-script = SubResource("GDScript_aj3mx")
-
 [node name="TimerAsteroide" type="Timer" parent="." unique_id=578733701]
 wait_time = 0.3
 autostart = true
@@ -123,6 +94,30 @@ shape = SubResource("RectangleShape2D_p4oxt")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="ParedeInvisivel" unique_id=965178907]
 position = Vector2(730.25, 471.75)
 shape = SubResource("RectangleShape2D_wjai6")
+
+[node name="HUD" type="CanvasLayer" parent="." unique_id=375309398]
+script = ExtResource("8_j5bp8")
+
+[node name="Coracao1" type="ColorRect" parent="HUD" unique_id=1734789534]
+offset_left = 20.0
+offset_top = 18.0
+offset_right = 52.0
+offset_bottom = 50.0
+color = Color(0.95, 0.15, 0.2, 1)
+
+[node name="Coracao2" type="ColorRect" parent="HUD" unique_id=365297795]
+offset_left = 60.0
+offset_top = 18.0
+offset_right = 92.0
+offset_bottom = 50.0
+color = Color(0.95, 0.15, 0.2, 1)
+
+[node name="Coracao3" type="ColorRect" parent="HUD" unique_id=1646614633]
+offset_left = 100.0
+offset_top = 18.0
+offset_right = 132.0
+offset_bottom = 50.0
+color = Color(0.95, 0.15, 0.2, 1)
 
 [connection signal="tomouDano" from="Nave" to="." method="_on_nave_tomou_dano"]
 [connection signal="timeout" from="TimerAsteroide" to="." method="_on_timer_asteroide_timeout"]

@@ -11,10 +11,11 @@ func _process(delta: float) -> void:
 	pass
 
 
-func _on_nave_tomou_dano(vida) -> void:
-	$CanvasLayer/Label.text = "VIDAS: " + str(vida)
+#func _on_nave_tomou_dano(vida) -> void:
+#	$CanvasLayer/Label.text = "VIDAS: " + str(vida)
 
 
+		
 func _on_timer_fase_timeout() -> void:#Responsável por fazer a fase da nave se encerrar depois de um período de tempo
 	$TimerAsteroide.stop()
 

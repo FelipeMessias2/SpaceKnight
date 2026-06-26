@@ -4,6 +4,7 @@ extends CharacterBody2D
 const JUMP_VELOCITY = -400.0
 const TIRO_NAVE_CENA = preload("res://CenaTiroNave.tscn") #Carrega na memória a cena do tiro
 var vida = 3
+var vida_maxima = 3
 signal naveDestruida
 signal tomouDano
 #const ASTEROIDE = preload("res://AsteroideCena.tscn") Acho que não faz sentido
@@ -20,6 +21,8 @@ func tomar_dano():
 	vida = vida -1
 	tomouDano.emit(vida)
 	print(vida)
+	_atualizar_hud()
+
 	if(vida<1):
 		naveDestruida.emit()#para juntar as duas fases depois
 		get_tree().change_scene_to_file("res://Fase2.tscn")
@@ -36,10 +39,13 @@ func _physics_process(delta):
 		if objeto_atingido.has_method("explodir"): #Responsável por achar o método que destroi o asteroide.
 			objeto_atingido.explodir()
 			tomar_dano()
-		
 		#var collision_point = collision_info.get_position()
 		
-   
+func _atualizar_hud():
+	var hud = get_tree().get_first_node_in_group("hud")
+	if hud:
+		hud.atualizar_hp(vida, vida_maxima)
+		
 func atirar():
 	var tiro = TIRO_NAVE_CENA.instantiate()
 	get_parent().add_child(tiro) #adicionando instancia do tiro como filho da cena principal
