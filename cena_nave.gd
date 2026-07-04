@@ -18,6 +18,7 @@ func _process(delta: float) -> void:
 		
 func _on_timer_fase_timeout() -> void:#Responsável por fazer a fase da nave se encerrar depois de um período de tempo
 	$TimerAsteroide.stop()
+	get_tree().change_scene_to_file("res://GameOver.tscn")
 
 
 func _on_timer_asteroide_timeout() -> void:#Responsável por spawnar os asteroides

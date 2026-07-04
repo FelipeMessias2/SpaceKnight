@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://x6gkrkrivr05"
-path="res://.godot/imported/316-3161853_pixel-art-asteroid-sprite-hd-png-download.png-d115b94498c59b991d8bcb09cd0e3f0a.ctex"
+uid="uid://dcmcisgui78dq"
+path="res://.godot/imported/FundoEspaço.png-861fc3ac97642019b529269909c7ab4b.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://316-3161853_pixel-art-asteroid-sprite-hd-png-download.png"
-dest_files=["res://.godot/imported/316-3161853_pixel-art-asteroid-sprite-hd-png-download.png-d115b94498c59b991d8bcb09cd0e3f0a.ctex"]
+source_file="res://Arte/FundoEspaço.png"
+dest_files=["res://.godot/imported/FundoEspaço.png-861fc3ac97642019b529269909c7ab4b.ctex"]
 
 [params]
 

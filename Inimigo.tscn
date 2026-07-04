@@ -1,28 +1,28 @@
-[gd_scene format=3]
+[gd_scene format=3 uid="uid://udu36q41wgyw"]
 
-[ext_resource type="Script" path="res://inimigo.gd" id="1_e"]
-[ext_resource type="Texture2D" path="res://icon.svg" id="2_e"]
+[ext_resource type="Script" uid="uid://bnbru48aj20qw" path="res://inimigo.gd" id="1_e"]
+[ext_resource type="Texture2D" uid="uid://bv5tpmnaa0d5j" path="res://icon.svg" id="2_e"]
 
 [sub_resource type="RectangleShape2D" id="rect_e"]
 size = Vector2(34, 52)
 
 [sub_resource type="RectangleShape2D" id="rect_ec"]
-size = Vector2(36, 54)
+size = Vector2(52, 54)
 
-[node name="Inimigo" type="CharacterBody2D"]
+[node name="Inimigo" type="CharacterBody2D" unique_id=1472518583]
 script = ExtResource("1_e")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=264260791]
 shape = SubResource("rect_e")
 
-[node name="Sprite2D" type="Sprite2D" parent="."]
-scale = Vector2(0.42, 0.42)
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=382947532]
 modulate = Color(1, 0.45, 0.1, 1)
+scale = Vector2(0.42, 0.42)
 texture = ExtResource("2_e")
 
-[node name="CorpoInimigo" type="Area2D" parent="."]
+[node name="CorpoInimigo" type="Area2D" parent="." unique_id=1527629064]
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="CorpoInimigo"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="CorpoInimigo" unique_id=484845179]
 shape = SubResource("rect_ec")
 
 [connection signal="body_entered" from="CorpoInimigo" to="." method="_on_corpo_inimigo_body_entered"]

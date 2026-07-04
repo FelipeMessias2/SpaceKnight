@@ -2,11 +2,10 @@
 
 [ext_resource type="Script" uid="uid://13x2s6i27w3w" path="res://cena_nave.gd" id="1_6iit8"]
 [ext_resource type="Script" uid="uid://b882p37hjafpm" path="res://character_body_2d_nave.gd" id="1_e3idd"]
-[ext_resource type="Texture2D" uid="uid://np0fguokgqhn" path="res://Arte/Fundo.png" id="1_g3hxh"]
+[ext_resource type="Texture2D" uid="uid://dcmcisgui78dq" path="res://Arte/FundoEspaço.png" id="2_aj3mx"]
 [ext_resource type="Texture2D" uid="uid://8iylpqrypol6" path="res://ship-sheet.png" id="2_g3hxh"]
 [ext_resource type="PackedScene" uid="uid://3ot1mi546sua" path="res://AsteroideCena.tscn" id="4_m3yir"]
 [ext_resource type="PackedScene" uid="uid://cciuii2705wnw" path="res://CenaTiroNave.tscn" id="5_oe2ed"]
-[ext_resource type="PackedScene" uid="uid://dopooayle3rxu" path="res://GameOver.tscn" id="7_aj3mx"]
 [ext_resource type="Script" uid="uid://b7bjwl061cyfl" path="res://hud_fase2.gd" id="8_j5bp8"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_m3yir"]
@@ -31,7 +30,7 @@ script = ExtResource("1_6iit8")
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=1368053867]
 position = Vector2(685.00006, 233.00002)
 scale = Vector2(1.1250001, 1.0733334)
-texture = ExtResource("1_g3hxh")
+texture = ExtResource("2_aj3mx")
 
 [node name="Nave" type="CharacterBody2D" parent="." unique_id=1078614421]
 position = Vector2(-62, -1)
@@ -66,12 +65,6 @@ wait_time = 60.0
 one_shot = true
 autostart = true
 
-[node name="GameOver" parent="." unique_id=106510237 instance=ExtResource("7_aj3mx")]
-offset_left = -1359.0
-offset_top = 31.0
-offset_right = -1359.0
-offset_bottom = 31.0
-
 [node name="ParedeInvisivel" type="StaticBody2D" parent="." unique_id=570400571]
 position = Vector2(541, -238)
 collision_layer = 4
@@ -95,24 +88,24 @@ shape = SubResource("RectangleShape2D_p4oxt")
 position = Vector2(730.25, 471.75)
 shape = SubResource("RectangleShape2D_wjai6")
 
-[node name="HUD" type="CanvasLayer" parent="." unique_id=1744869678]
+[node name="HUD" type="CanvasLayer" parent="." unique_id=375309398]
 script = ExtResource("8_j5bp8")
 
-[node name="Coracao1" type="ColorRect" parent="HUD" unique_id=249390464]
+[node name="Coracao1" type="ColorRect" parent="HUD" unique_id=1734789534]
 offset_left = 20.0
 offset_top = 18.0
 offset_right = 52.0
 offset_bottom = 50.0
 color = Color(0.95, 0.15, 0.2, 1)
 
-[node name="Coracao2" type="ColorRect" parent="HUD" unique_id=1434713244]
+[node name="Coracao2" type="ColorRect" parent="HUD" unique_id=365297795]
 offset_left = 60.0
 offset_top = 18.0
 offset_right = 92.0
 offset_bottom = 50.0
 color = Color(0.95, 0.15, 0.2, 1)
 
-[node name="Coracao3" type="ColorRect" parent="HUD" unique_id=1050127572]
+[node name="Coracao3" type="ColorRect" parent="HUD" unique_id=1646614633]
 offset_left = 100.0
 offset_top = 18.0
 offset_right = 132.0
