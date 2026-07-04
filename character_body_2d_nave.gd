@@ -5,6 +5,7 @@ const JUMP_VELOCITY = -400.0
 const TIRO_NAVE_CENA = preload("res://CenaTiroNave.tscn") #Carrega na memória a cena do tiro
 var vida = 3
 var vida_maxima = 3
+@onready var ponto_de_tiro = $PontoDeTiro
 signal naveDestruida
 signal tomouDano
 #const ASTEROIDE = preload("res://AsteroideCena.tscn") Acho que não faz sentido
@@ -46,7 +47,7 @@ func _atualizar_hud():
 func atirar():
 	var tiro = TIRO_NAVE_CENA.instantiate()
 	get_parent().add_child(tiro) #adicionando instancia do tiro como filho da cena principal
-	tiro.global_position = global_position #TODO QUANDO COLOCAR O MARKER, MUDAR PARA pontodetiro.global_position
+	tiro.global_position =  ponto_de_tiro.global_position
 	tiro.global_rotation = global_rotation
 		
 	

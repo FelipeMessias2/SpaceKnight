@@ -50,18 +50,21 @@ texture = ExtResource("2_g3hxh")
 region_enabled = true
 region_rect = Rect2(95.66324, 0, 32.33676, 32)
 
+[node name="PontoDeTiro" type="Marker2D" parent="Nave" unique_id=348085185]
+position = Vector2(312, 215)
+
 [node name="TiroNave_Cena" parent="." unique_id=1683016526 instance=ExtResource("5_oe2ed")]
 position = Vector2(-305, 608)
 
 [node name="Asteroide" parent="." unique_id=1568276614 instance=ExtResource("4_m3yir")]
 position = Vector2(1211, 123)
 
-[node name="TimerAsteroide" type="Timer" parent="." unique_id=578733701]
+[node name="TimerAsteroideHorizontal" type="Timer" parent="." unique_id=578733701]
 wait_time = 0.3
 autostart = true
 
 [node name="TimerFase" type="Timer" parent="." unique_id=1671775047]
-wait_time = 60.0
+wait_time = 50.0
 one_shot = true
 autostart = true
 
@@ -112,6 +115,11 @@ offset_right = 132.0
 offset_bottom = 50.0
 color = Color(0.95, 0.15, 0.2, 1)
 
+[node name="TimerAsteroideVertical" type="Timer" parent="." unique_id=373477702]
+wait_time = 0.7
+autostart = true
+
 [connection signal="tomouDano" from="Nave" to="." method="_on_nave_tomou_dano"]
-[connection signal="timeout" from="TimerAsteroide" to="." method="_on_timer_asteroide_timeout"]
+[connection signal="timeout" from="TimerAsteroideHorizontal" to="." method="_on_timer_asteroide_timeout"]
 [connection signal="timeout" from="TimerFase" to="." method="_on_timer_fase_timeout"]
+[connection signal="timeout" from="TimerAsteroideVertical" to="." method="_on_timer_asteroide_vertical_timeout"]

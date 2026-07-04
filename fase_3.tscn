@@ -1,4 +1,4 @@
-[gd_scene format=3 uid="uid://c5n131juxy0gf"]
+[gd_scene format=3 uid="uid://cp66eg418awvj"]
 
 [ext_resource type="Script" uid="uid://b7bjwl061cyfl" path="res://hud_fase2.gd" id="1_y4i80"]
 [ext_resource type="PackedScene" path="res://Player.tscn" id="2_6tnni"]
