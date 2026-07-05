@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://x6gkrkrivr05"
-path="res://.godot/imported/316-3161853_pixel-art-asteroid-sprite-hd-png-download.png-d115b94498c59b991d8bcb09cd0e3f0a.ctex"
+uid="uid://k63pqiwgq644"
+path="res://.godot/imported/PurpleGuy.jpeg-609b32fd6116acf03289e1b68decfa2a.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://316-3161853_pixel-art-asteroid-sprite-hd-png-download.png"
-dest_files=["res://.godot/imported/316-3161853_pixel-art-asteroid-sprite-hd-png-download.png-d115b94498c59b991d8bcb09cd0e3f0a.ctex"]
+source_file="res://Arte/Arte_Inimigos/PurpleGuy.jpeg"
+dest_files=["res://.godot/imported/PurpleGuy.jpeg-609b32fd6116acf03289e1b68decfa2a.ctex"]
 
 [params]
 

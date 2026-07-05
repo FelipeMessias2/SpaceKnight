@@ -1,5 +1,4 @@
 extends CharacterBody2D
-
 @export var velocidade: float = 180.0
 @export var forca_pulo: float = -460.0
 @export var hp_maximo: int = 3
@@ -8,10 +7,9 @@ var hp: int = 3
 var pode_atacar: bool = true
 var esta_morto: bool = false
 var invencivel: bool = false
-
 @onready var sprite = $Sprite2D
 @onready var hitbox_ataque = $HitboxAtaque
-
+signal player_morreu
 func _ready():
 	add_to_group("jogador")
 	hp = hp_maximo
@@ -62,9 +60,12 @@ func tomar_dano(quantidade: int = 1):
 
 func _morrer():
 	esta_morto = true
-	await get_tree().create_timer(1.2).timeout
-	get_tree().reload_current_scene()
-
+	#get_tree().change_scene_to_file("res://GameOver.tscn")## TODO TROCAR
+	player_morreu.emit()
+	## PARA FAZER COM QUE O PLAYER VOLTE A VIDA
+	##await get_tree().create_timer(1.2).timeout
+	##get_tree().reload_current_scene()
+	
 func _atualizar_hud():
 	var hud = get_tree().get_first_node_in_group("hud")
 	if hud:

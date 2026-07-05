@@ -2,11 +2,10 @@
 
 [ext_resource type="Script" uid="uid://13x2s6i27w3w" path="res://cena_nave.gd" id="1_6iit8"]
 [ext_resource type="Script" uid="uid://b882p37hjafpm" path="res://character_body_2d_nave.gd" id="1_e3idd"]
-[ext_resource type="Texture2D" uid="uid://np0fguokgqhn" path="res://Arte/Fundo.png" id="1_g3hxh"]
+[ext_resource type="Texture2D" uid="uid://dcmcisgui78dq" path="res://Arte/FundoEspaço.png" id="2_aj3mx"]
 [ext_resource type="Texture2D" uid="uid://8iylpqrypol6" path="res://ship-sheet.png" id="2_g3hxh"]
 [ext_resource type="PackedScene" uid="uid://3ot1mi546sua" path="res://AsteroideCena.tscn" id="4_m3yir"]
 [ext_resource type="PackedScene" uid="uid://cciuii2705wnw" path="res://CenaTiroNave.tscn" id="5_oe2ed"]
-[ext_resource type="PackedScene" uid="uid://dopooayle3rxu" path="res://GameOver.tscn" id="7_aj3mx"]
 [ext_resource type="Script" uid="uid://b7bjwl061cyfl" path="res://hud_fase2.gd" id="8_j5bp8"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_m3yir"]
@@ -31,7 +30,7 @@ script = ExtResource("1_6iit8")
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=1368053867]
 position = Vector2(685.00006, 233.00002)
 scale = Vector2(1.1250001, 1.0733334)
-texture = ExtResource("1_g3hxh")
+texture = ExtResource("2_aj3mx")
 
 [node name="Nave" type="CharacterBody2D" parent="." unique_id=1078614421]
 position = Vector2(-62, -1)
@@ -51,26 +50,23 @@ texture = ExtResource("2_g3hxh")
 region_enabled = true
 region_rect = Rect2(95.66324, 0, 32.33676, 32)
 
+[node name="PontoDeTiro" type="Marker2D" parent="Nave" unique_id=348085185]
+position = Vector2(312, 215)
+
 [node name="TiroNave_Cena" parent="." unique_id=1683016526 instance=ExtResource("5_oe2ed")]
 position = Vector2(-305, 608)
 
 [node name="Asteroide" parent="." unique_id=1568276614 instance=ExtResource("4_m3yir")]
 position = Vector2(1211, 123)
 
-[node name="TimerAsteroide" type="Timer" parent="." unique_id=578733701]
+[node name="TimerAsteroideHorizontal" type="Timer" parent="." unique_id=578733701]
 wait_time = 0.3
 autostart = true
 
 [node name="TimerFase" type="Timer" parent="." unique_id=1671775047]
-wait_time = 60.0
+wait_time = 5.0
 one_shot = true
 autostart = true
-
-[node name="GameOver" parent="." unique_id=106510237 instance=ExtResource("7_aj3mx")]
-offset_left = -1359.0
-offset_top = 31.0
-offset_right = -1359.0
-offset_bottom = 31.0
 
 [node name="ParedeInvisivel" type="StaticBody2D" parent="." unique_id=570400571]
 position = Vector2(541, -238)
@@ -119,6 +115,12 @@ offset_right = 132.0
 offset_bottom = 50.0
 color = Color(0.95, 0.15, 0.2, 1)
 
+[node name="TimerAsteroideVertical" type="Timer" parent="." unique_id=373477702]
+wait_time = 0.7
+autostart = true
+
+[connection signal="naveDestruida" from="Nave" to="." method="_on_nave_nave_destruida"]
 [connection signal="tomouDano" from="Nave" to="." method="_on_nave_tomou_dano"]
-[connection signal="timeout" from="TimerAsteroide" to="." method="_on_timer_asteroide_timeout"]
+[connection signal="timeout" from="TimerAsteroideHorizontal" to="." method="_on_timer_asteroide_timeout"]
 [connection signal="timeout" from="TimerFase" to="." method="_on_timer_fase_timeout"]
+[connection signal="timeout" from="TimerAsteroideVertical" to="." method="_on_timer_asteroide_vertical_timeout"]

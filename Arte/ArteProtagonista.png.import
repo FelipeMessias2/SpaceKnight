@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://lji4arqe68by"
-path="res://.godot/imported/Brickwall2_Texture.png-6a7547907421ab455f71d7a6666ecc8e.ctex"
+uid="uid://cfb3roq6igf4"
+path="res://.godot/imported/ArteProtagonista.png-de6b42109b02da47c772d324b2e000e5.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Brickwall2_Texture.png"
-dest_files=["res://.godot/imported/Brickwall2_Texture.png-6a7547907421ab455f71d7a6666ecc8e.ctex"]
+source_file="res://Arte/ArteProtagonista.png"
+dest_files=["res://.godot/imported/ArteProtagonista.png-de6b42109b02da47c772d324b2e000e5.ctex"]
 
 [params]
 

@@ -1,8 +1,8 @@
-[gd_scene format=3 uid="uid://c5n131juxy0gf"]
+[gd_scene format=3 uid="uid://cp66eg418awvj"]
 
 [ext_resource type="Script" uid="uid://b7bjwl061cyfl" path="res://hud_fase2.gd" id="1_y4i80"]
 [ext_resource type="PackedScene" path="res://Player.tscn" id="2_6tnni"]
-[ext_resource type="Texture2D" uid="uid://d0bj231hfbu4o" path="res://636c61619a79a42217e99cbd39334165.png" id="3_6tnni"]
+[ext_resource type="Texture2D" uid="uid://djy3i0pojfq82" path="res://Arte/ArteFundoFase2.png" id="3_6tnni"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_bemxe"]
 size = Vector2(1800, 40)

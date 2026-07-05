@@ -1,11 +1,12 @@
-[gd_scene load_steps=14 format=3 uid="uid://0lbg2hveaosw"]
+[gd_scene format=3 uid="uid://0lbg2hveaosw"]
 
-[ext_resource type="Script" uid="uid://bud0divcapt44" path="res://alavanca.gd" id="1_alav"]
-[ext_resource type="Script" uid="uid://bxtoxwwinrys6" path="res://porta.gd" id="2_port"]
+[ext_resource type="Script" uid="uid://dls8njn3u5g30" path="res://alavanca.gd" id="1_alav"]
+[ext_resource type="Script" uid="uid://c8v48ot1k4squ" path="res://fase_2.gd" id="1_qgfrg"]
+[ext_resource type="Script" uid="uid://dl7mlhhhfnuvq" path="res://porta.gd" id="2_port"]
 [ext_resource type="Script" uid="uid://br517k4amak0" path="res://zona_saida.gd" id="3_saida"]
 [ext_resource type="Script" uid="uid://b7bjwl061cyfl" path="res://hud_fase2.gd" id="4_hud"]
 [ext_resource type="PackedScene" path="res://Player.tscn" id="5_player"]
-[ext_resource type="PackedScene" path="res://Inimigo.tscn" id="6_inim"]
+[ext_resource type="PackedScene" uid="uid://udu36q41wgyw" path="res://Inimigo.tscn" id="6_inim"]
 [ext_resource type="Texture2D" uid="uid://b6ydmmeyhqkqa" path="res://Arte/Parede/bricks/Brickwall2_Texture.png" id="7_wall"]
 
 [sub_resource type="RectangleShape2D" id="rs_chao"]
@@ -26,9 +27,13 @@ size = Vector2(70, 110)
 [sub_resource type="CircleShape2D" id="cs_alav"]
 radius = 60.0
 
-[node name="Fase2" type="Node2D"]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ltj3d"]
+size = Vector2(1800, 40)
 
-[node name="FundoParede" type="Sprite2D" parent="."]
+[node name="Fase2" type="Node2D" unique_id=442367836]
+script = ExtResource("1_qgfrg")
+
+[node name="FundoParede" type="Sprite2D" parent="." unique_id=1520584384]
 modulate = Color(0.42, 0.47, 0.56, 1)
 texture_repeat = 2
 position = Vector2(700, 300)
@@ -36,79 +41,81 @@ texture = ExtResource("7_wall")
 region_enabled = true
 region_rect = Rect2(0, 0, 2600, 900)
 
-[node name="Chao" type="StaticBody2D" parent="."]
+[node name="Chao" type="StaticBody2D" parent="." unique_id=2016076937]
 position = Vector2(700, 600)
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Chao"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Chao" unique_id=352453913]
 shape = SubResource("rs_chao")
 
-[node name="Visual" type="Polygon2D" parent="Chao"]
+[node name="Visual" type="Polygon2D" parent="Chao" unique_id=304999203]
 color = Color(0.18, 0.26, 0.38, 1)
 polygon = PackedVector2Array(-900, -20, 900, -20, 900, 20, -900, 20)
 
-[node name="Topo" type="Polygon2D" parent="Chao"]
+[node name="Topo" type="Polygon2D" parent="Chao" unique_id=32564126]
 color = Color(0.4, 0.62, 0.8, 1)
 polygon = PackedVector2Array(-900, -20, 900, -20, 900, -15, -900, -15)
 
-[node name="Plataforma" type="StaticBody2D" parent="."]
-position = Vector2(480, 520)
+[node name="Plataforma" type="StaticBody2D" parent="." unique_id=1332901947]
+position = Vector2(480, 489)
+metadata/_edit_group_ = true
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Plataforma"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Plataforma" unique_id=1242786620]
 shape = SubResource("rs_plat")
 
-[node name="Visual" type="Polygon2D" parent="Plataforma"]
+[node name="Visual" type="Polygon2D" parent="Plataforma" unique_id=1272773766]
 color = Color(0.2, 0.29, 0.42, 1)
 polygon = PackedVector2Array(-120, -12, 120, -12, 120, 12, -120, 12)
 
-[node name="Topo" type="Polygon2D" parent="Plataforma"]
+[node name="Topo" type="Polygon2D" parent="Plataforma" unique_id=10211404]
 color = Color(0.4, 0.62, 0.8, 1)
 polygon = PackedVector2Array(-120, -12, 120, -12, 120, -8, -120, -8)
 
-[node name="ParedeEsq" type="StaticBody2D" parent="."]
+[node name="ParedeEsq" type="StaticBody2D" parent="." unique_id=1097710428]
 position = Vector2(-80, 350)
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="ParedeEsq"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="ParedeEsq" unique_id=1351140972]
 shape = SubResource("rs_parede")
 
-[node name="Visual" type="Polygon2D" parent="ParedeEsq"]
+[node name="Visual" type="Polygon2D" parent="ParedeEsq" unique_id=4009767]
 color = Color(0.12, 0.17, 0.25, 1)
 polygon = PackedVector2Array(-20, -350, 20, -350, 20, 350, -20, 350)
 
-[node name="Porta" type="StaticBody2D" parent="."]
+[node name="Porta" type="StaticBody2D" parent="." unique_id=1974394392]
 position = Vector2(820, 515)
 script = ExtResource("2_port")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Porta"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Porta" unique_id=763125017]
 shape = SubResource("rs_porta")
 
-[node name="Visual" type="Polygon2D" parent="Porta"]
+[node name="Visual" type="Polygon2D" parent="Porta" unique_id=1304353528]
 color = Color(0.85, 0.2, 0.16, 1)
 polygon = PackedVector2Array(-16, -70, 16, -70, 16, 70, -16, 70)
 
-[node name="ZonaSaida" type="Area2D" parent="."]
+[node name="ZonaSaida" type="Area2D" parent="." unique_id=1547545178]
 position = Vector2(1400, 540)
 script = ExtResource("3_saida")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="ZonaSaida"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="ZonaSaida" unique_id=1695593009]
 shape = SubResource("rs_saida")
 
-[node name="Visual" type="Polygon2D" parent="ZonaSaida"]
+[node name="Visual" type="Polygon2D" parent="ZonaSaida" unique_id=5039283]
 color = Color(0.13, 0.82, 0.46, 1)
 polygon = PackedVector2Array(-35, -55, 35, -55, 35, 55, -35, 55)
 
-[node name="Alavanca" type="Area2D" parent="."]
-position = Vector2(480, 488)
+[node name="Alavanca" type="Area2D" parent="." unique_id=2113175015]
+position = Vector2(480, 459)
 script = ExtResource("1_alav")
 porta = NodePath("../Porta")
+metadata/_edit_group_ = true
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Alavanca"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Alavanca" unique_id=1417042450]
 shape = SubResource("cs_alav")
 
-[node name="Visual" type="Polygon2D" parent="Alavanca"]
+[node name="Visual" type="Polygon2D" parent="Alavanca" unique_id=1234264773]
 color = Color(0.95, 0.85, 0.1, 1)
 polygon = PackedVector2Array(-18, -18, 18, -18, 18, 18, -18, 18)
 
-[node name="Aviso" type="Label" parent="Alavanca"]
+[node name="Aviso" type="Label" parent="Alavanca" unique_id=448643625]
 offset_left = -80.0
 offset_top = -96.0
 offset_right = 80.0
@@ -120,39 +127,53 @@ theme_override_font_sizes/font_size = 22
 text = "Aperte  S"
 horizontal_alignment = 1
 
-[node name="Inimigo" parent="." instance=ExtResource("6_inim")]
+[node name="Inimigo" parent="." unique_id=1860878110 instance=ExtResource("6_inim")]
 position = Vector2(280, 520)
 
-[node name="Inimigo2" parent="." instance=ExtResource("6_inim")]
-position = Vector2(1050, 520)
+[node name="Inimigo2" parent="." unique_id=940864786 instance=ExtResource("6_inim")]
+position = Vector2(1041, 520)
 
-[node name="Player" parent="." instance=ExtResource("5_player")]
+[node name="Player" parent="." unique_id=2043670918 instance=ExtResource("5_player")]
 position = Vector2(120, 500)
 
-[node name="HUD" type="CanvasLayer" parent="."]
+[node name="HUD" type="CanvasLayer" parent="." unique_id=558876752]
 script = ExtResource("4_hud")
 
-[node name="Coracao1" type="ColorRect" parent="HUD"]
+[node name="Coracao1" type="ColorRect" parent="HUD" unique_id=894364735]
 offset_left = 20.0
 offset_top = 18.0
 offset_right = 52.0
 offset_bottom = 50.0
 color = Color(0.95, 0.15, 0.2, 1)
 
-[node name="Coracao2" type="ColorRect" parent="HUD"]
+[node name="Coracao2" type="ColorRect" parent="HUD" unique_id=1148408737]
 offset_left = 60.0
 offset_top = 18.0
 offset_right = 92.0
 offset_bottom = 50.0
 color = Color(0.95, 0.15, 0.2, 1)
 
-[node name="Coracao3" type="ColorRect" parent="HUD"]
+[node name="Coracao3" type="ColorRect" parent="HUD" unique_id=1059459238]
 offset_left = 100.0
 offset_top = 18.0
 offset_right = 132.0
 offset_bottom = 50.0
 color = Color(0.95, 0.15, 0.2, 1)
 
+[node name="Teto" type="StaticBody2D" parent="." unique_id=1758419512]
+position = Vector2(-2, 4)
+metadata/_edit_group_ = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Teto" unique_id=1613170911]
+position = Vector2(842, 246)
+shape = SubResource("RectangleShape2D_ltj3d")
+
+[node name="Visual" type="Polygon2D" parent="Teto" unique_id=1627269354]
+position = Vector2(842, 247)
+color = Color(0.18039216, 0.25882354, 0.38039216, 1)
+polygon = PackedVector2Array(-900, -20, 900, -20, 900, 20, -900, 20)
+
 [connection signal="body_entered" from="ZonaSaida" to="ZonaSaida" method="_on_body_entered"]
 [connection signal="body_entered" from="Alavanca" to="Alavanca" method="_on_body_entered"]
 [connection signal="body_exited" from="Alavanca" to="Alavanca" method="_on_body_exited"]
+[connection signal="player_morreu" from="Player" to="." method="_on_player_player_morreu"]
