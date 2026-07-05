@@ -64,13 +64,14 @@ wait_time = 0.3
 autostart = true
 
 [node name="TimerFase" type="Timer" parent="." unique_id=1671775047]
-wait_time = 5.0
+wait_time = 50.0
 one_shot = true
 autostart = true
 
 [node name="ParedeInvisivel" type="StaticBody2D" parent="." unique_id=570400571]
 position = Vector2(541, -238)
 collision_layer = 4
+metadata/_edit_group_ = true
 
 [node name="Cima" type="CollisionShape2D" parent="ParedeInvisivel" unique_id=1534819576]
 position = Vector2(144, 144.00002)
