@@ -1,0 +1,126 @@
+[gd_scene format=3 uid="uid://dvhduikak45m"]
+
+[ext_resource type="Script" uid="uid://h3jjyua7a3i3" path="res://boss_cena.gd" id="1_ppp70"]
+[ext_resource type="Texture2D" uid="uid://dcmcisgui78dq" path="res://Arte/FundoEspaço.png" id="2_twa0l"]
+[ext_resource type="Script" uid="uid://b882p37hjafpm" path="res://character_body_2d_nave.gd" id="3_w0nxo"]
+[ext_resource type="Texture2D" uid="uid://8iylpqrypol6" path="res://ship-sheet.png" id="4_ualwc"]
+[ext_resource type="PackedScene" uid="uid://cciuii2705wnw" path="res://CenaTiroNave.tscn" id="5_p3x7q"]
+[ext_resource type="PackedScene" uid="uid://3ot1mi546sua" path="res://AsteroideCena.tscn" id="6_krxg6"]
+[ext_resource type="Script" uid="uid://b7bjwl061cyfl" path="res://hud_fase2.gd" id="7_hos33"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_v1cut"]
+size = Vector2(104, 102)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_opxf0"]
+size = Vector2(115.5, 1.0500022)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_2e0mp"]
+size = Vector2(28.8, 0.27499723)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_5xgpp"]
+size = Vector2(8.25, 321.5)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_scmjd"]
+size = Vector2(23.5, 644.5)
+
+[node name="Node2D" type="Node2D" unique_id=676224192]
+script = ExtResource("1_ppp70")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1431656026]
+position = Vector2(580, 320)
+scale = Vector2(1.1250001, 1.0733334)
+texture = ExtResource("2_twa0l")
+
+[node name="Nave" type="CharacterBody2D" parent="." unique_id=394906973]
+position = Vector2(-165, 125)
+collision_mask = 37
+script = ExtResource("3_w0nxo")
+metadata/_edit_group_ = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Nave" unique_id=2094003393]
+position = Vector2(261, 216)
+shape = SubResource("RectangleShape2D_v1cut")
+
+[node name="Sprite2D" type="Sprite2D" parent="Nave" unique_id=1617750082]
+position = Vector2(256.69345, 215.68997)
+rotation = 1.5707964
+scale = Vector2(3.1348379, 3.4796593)
+texture = ExtResource("4_ualwc")
+region_enabled = true
+region_rect = Rect2(95.66324, 0, 32.33676, 32)
+
+[node name="PontoDeTiro" type="Marker2D" parent="Nave" unique_id=1851565184]
+position = Vector2(312, 215)
+
+[node name="TiroNave_Cena" parent="." unique_id=1683016526 instance=ExtResource("5_p3x7q")]
+position = Vector2(1402, 103)
+
+[node name="Asteroide" parent="." unique_id=282668546 instance=ExtResource("6_krxg6")]
+position = Vector2(1409, 755)
+
+[node name="TimerAsteroideHorizontal" type="Timer" parent="." unique_id=183665694]
+wait_time = 0.3
+autostart = true
+
+[node name="TimerFase" type="Timer" parent="." unique_id=201544241]
+wait_time = 50.0
+one_shot = true
+autostart = true
+
+[node name="ParedeInvisivel" type="StaticBody2D" parent="." unique_id=2016525215]
+position = Vector2(435, -153)
+collision_layer = 4
+metadata/_edit_group_ = true
+
+[node name="Cima" type="CollisionShape2D" parent="ParedeInvisivel" unique_id=1836103699]
+position = Vector2(144, 144.00002)
+scale = Vector2(10, 10)
+shape = SubResource("RectangleShape2D_opxf0")
+
+[node name="Baixo" type="CollisionShape2D" parent="ParedeInvisivel" unique_id=635298882]
+position = Vector2(144, 798)
+scale = Vector2(40, 40)
+shape = SubResource("RectangleShape2D_2e0mp")
+
+[node name="Esquerda" type="CollisionShape2D" parent="ParedeInvisivel" unique_id=439588616]
+position = Vector2(-441, 468)
+scale = Vector2(2, 2)
+shape = SubResource("RectangleShape2D_5xgpp")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="ParedeInvisivel" unique_id=142767375]
+position = Vector2(730.25, 471.75)
+shape = SubResource("RectangleShape2D_scmjd")
+
+[node name="HUD" type="CanvasLayer" parent="." unique_id=1265293709]
+script = ExtResource("7_hos33")
+
+[node name="Coracao1" type="ColorRect" parent="HUD" unique_id=983864716]
+offset_left = 20.0
+offset_top = 18.0
+offset_right = 52.0
+offset_bottom = 50.0
+color = Color(0.95, 0.15, 0.2, 1)
+
+[node name="Coracao2" type="ColorRect" parent="HUD" unique_id=289823438]
+offset_left = 60.0
+offset_top = 18.0
+offset_right = 92.0
+offset_bottom = 50.0
+color = Color(0.95, 0.15, 0.2, 1)
+
+[node name="Coracao3" type="ColorRect" parent="HUD" unique_id=14044147]
+offset_left = 100.0
+offset_top = 18.0
+offset_right = 132.0
+offset_bottom = 50.0
+color = Color(0.95, 0.15, 0.2, 1)
+
+[node name="TimerAsteroideVertical" type="Timer" parent="." unique_id=382540587]
+wait_time = 0.7
+autostart = true
+
+[connection signal="naveDestruida" from="Nave" to="." method="_on_nave_nave_destruida"]
+[connection signal="tomouDano" from="Nave" to="." method="_on_nave_tomou_dano"]
+[connection signal="timeout" from="TimerAsteroideHorizontal" to="." method="_on_timer_asteroide_horizontal_timeout"]
+[connection signal="timeout" from="TimerFase" to="." method="_on_timer_fase_timeout"]
+[connection signal="timeout" from="TimerAsteroideVertical" to="." method="_on_timer_asteroide_vertical_timeout"]
