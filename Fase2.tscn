@@ -1,6 +1,7 @@
 [gd_scene format=3 uid="uid://0lbg2hveaosw"]
 
 [ext_resource type="Script" uid="uid://dls8njn3u5g30" path="res://alavanca.gd" id="1_alav"]
+[ext_resource type="Script" uid="uid://c8v48ot1k4squ" path="res://fase_2.gd" id="1_qgfrg"]
 [ext_resource type="Script" uid="uid://dl7mlhhhfnuvq" path="res://porta.gd" id="2_port"]
 [ext_resource type="Script" uid="uid://br517k4amak0" path="res://zona_saida.gd" id="3_saida"]
 [ext_resource type="Script" uid="uid://b7bjwl061cyfl" path="res://hud_fase2.gd" id="4_hud"]
@@ -30,6 +31,7 @@ radius = 60.0
 size = Vector2(1800, 40)
 
 [node name="Fase2" type="Node2D" unique_id=442367836]
+script = ExtResource("1_qgfrg")
 
 [node name="FundoParede" type="Sprite2D" parent="." unique_id=1520584384]
 modulate = Color(0.42, 0.47, 0.56, 1)
@@ -174,3 +176,4 @@ polygon = PackedVector2Array(-900, -20, 900, -20, 900, 20, -900, 20)
 [connection signal="body_entered" from="ZonaSaida" to="ZonaSaida" method="_on_body_entered"]
 [connection signal="body_entered" from="Alavanca" to="Alavanca" method="_on_body_entered"]
 [connection signal="body_exited" from="Alavanca" to="Alavanca" method="_on_body_exited"]
+[connection signal="player_morreu" from="Player" to="." method="_on_player_player_morreu"]

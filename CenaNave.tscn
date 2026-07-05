@@ -64,7 +64,7 @@ wait_time = 0.3
 autostart = true
 
 [node name="TimerFase" type="Timer" parent="." unique_id=1671775047]
-wait_time = 50.0
+wait_time = 5.0
 one_shot = true
 autostart = true
 
@@ -119,6 +119,7 @@ color = Color(0.95, 0.15, 0.2, 1)
 wait_time = 0.7
 autostart = true
 
+[connection signal="naveDestruida" from="Nave" to="." method="_on_nave_nave_destruida"]
 [connection signal="tomouDano" from="Nave" to="." method="_on_nave_tomou_dano"]
 [connection signal="timeout" from="TimerAsteroideHorizontal" to="." method="_on_timer_asteroide_timeout"]
 [connection signal="timeout" from="TimerFase" to="." method="_on_timer_fase_timeout"]

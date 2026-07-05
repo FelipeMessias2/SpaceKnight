@@ -1,5 +1,7 @@
 [gd_scene format=3 uid="uid://dopooayle3rxu"]
 
+[ext_resource type="Script" uid="uid://5tnwisqh1hie" path="res://game_over.gd" id="1_40baj"]
+
 [node name="Control" type="Control" unique_id=106510237]
 layout_mode = 3
 anchors_preset = 15
@@ -7,6 +9,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+script = ExtResource("1_40baj")
 
 [node name="ColorRect" type="ColorRect" parent="." unique_id=497202551]
 layout_mode = 0
@@ -38,3 +41,5 @@ layout_mode = 2
 theme_override_font_sizes/font_size = 50
 text = "<Tentar Novamente?>"
 flat = true
+
+[connection signal="pressed" from="CenterContainer/VBoxContainer/Button" to="." method="_on_button_pressed"]
