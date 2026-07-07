@@ -1,7 +1,7 @@
-[gd_scene format=3]
+[gd_scene format=3 uid="uid://b3j4u30wxcfgv"]
 
 [ext_resource type="Script" path="res://player_fase2.gd" id="1_p"]
-[ext_resource type="Texture2D" path="res://icon.svg" id="2_p"]
+[ext_resource type="Texture2D" uid="uid://bv5tpmnaa0d5j" path="res://icon.svg" id="2_p"]
 
 [sub_resource type="CapsuleShape2D" id="cap_p"]
 radius = 18.0
@@ -10,24 +10,25 @@ height = 50.0
 [sub_resource type="RectangleShape2D" id="rect_atk"]
 size = Vector2(44, 34)
 
-[node name="Player" type="CharacterBody2D"]
+[node name="Player" type="CharacterBody2D" unique_id=865176942]
 script = ExtResource("1_p")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1060965341]
 shape = SubResource("cap_p")
 
-[node name="Sprite2D" type="Sprite2D" parent="."]
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=538499165]
 scale = Vector2(0.4, 0.4)
 texture = ExtResource("2_p")
 
-[node name="HitboxAtaque" type="Area2D" parent="."]
+[node name="HitboxAtaque" type="Area2D" parent="." unique_id=1920159765]
 position = Vector2(42, 0)
+collision_mask = 3
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="HitboxAtaque"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HitboxAtaque" unique_id=1589925298]
 shape = SubResource("rect_atk")
 disabled = true
 
-[node name="Camera2D" type="Camera2D" parent="."]
+[node name="Camera2D" type="Camera2D" parent="." unique_id=2120119466]
 zoom = Vector2(1.8, 1.8)
 
 [connection signal="body_entered" from="HitboxAtaque" to="." method="_on_hitbox_ataque_body_entered"]

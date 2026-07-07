@@ -1,0 +1,39 @@
+[gd_scene format=3 uid="uid://c1vhwl7loy3rn"]
+
+[ext_resource type="Script" uid="uid://cxyc1cpbfwpyg" path="res://boss.gd" id="1_4jvlg"]
+[ext_resource type="Texture2D" uid="uid://b0ajifd7w56uy" path="res://Arte/Arte_Inimigos/Arte_Boss.png" id="1_dtosr"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_dtosr"]
+radius = 246.03252
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_4jvlg"]
+size = Vector2(450.5, 338.25)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_paxtu"]
+size = Vector2(329.5, 144)
+
+[node name="Node2D" type="CharacterBody2D" unique_id=574702641]
+position = Vector2(-5, 17)
+collision_layer = 2
+collision_mask = 67
+script = ExtResource("1_4jvlg")
+metadata/_edit_group_ = true
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=585236778]
+position = Vector2(831.51294, 305.73148)
+scale = Vector2(0.5057677, 0.42317843)
+texture = ExtResource("1_dtosr")
+
+[node name="Timer" type="Timer" parent="." unique_id=578469272]
+
+[node name="Cabeça_colisao" type="CollisionShape2D" parent="." unique_id=502926197]
+position = Vector2(966, 219)
+shape = SubResource("CircleShape2D_dtosr")
+
+[node name="Tronco_colisao" type="CollisionShape2D" parent="." unique_id=234495510]
+position = Vector2(926.75, 465.875)
+shape = SubResource("RectangleShape2D_4jvlg")
+
+[node name="Tentaculos_colisao" type="CollisionShape2D" parent="." unique_id=1040871719]
+position = Vector2(546.75, 561)
+shape = SubResource("RectangleShape2D_paxtu")

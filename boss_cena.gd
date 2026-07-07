@@ -10,11 +10,6 @@ func _ready() -> void:
 func _process(delta: float) -> void:
 	pass
 		
-func _on_timer_fase_timeout() -> void:#Responsável por fazer a fase da nave se encerrar depois de um período de tempo
-	$TimerAsteroideHorizontal.stop()
-	$TimerAsteroideVertical.stop()
-	fase_concluida.emit()
-
 func _on_timer_asteroide_timeout() -> void:#Responsável por spawnar os asteroides horizontalmente
 	var asteroide = ASTEROIDE_CENA.instantiate()
 	var posicao_x = get_viewport_rect().size.x + 180
@@ -42,3 +37,9 @@ func _on_timer_asteroide_horizontal_timeout() -> void:
 	var posicao_y = randf_range(-20,altura_Tela)
 	asteroide.global_position = Vector2(posicao_x,posicao_y)
 	add_child(asteroide)
+
+
+func _on_boss_morreu() -> void: #Quando o boss morre, os asteroides param de vir e a fase acaba
+	$TimerAsteroideHorizontal.stop()
+	$TimerAsteroideVertical.stop()
+	fase_concluida.emit()
