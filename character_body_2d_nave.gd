@@ -19,11 +19,8 @@ func tomar_dano(): #TODO RESOLVER BUG DE INVICIBILITY FRAME
 	if invencivel:
 		return
 	invencivel = true
-	set_collision_mask_value(2, false) #Desativa colisão com os inimigos e com os obstáculos
-	set_collision_mask_value(6, false)
 	vida = vida -1
 	tomouDano.emit(vida)
-	print(vida)
 	_atualizar_hud()
 	if(vida<1):
 		naveDestruida.emit()#para juntar as duas fases depois
@@ -35,10 +32,6 @@ func tomar_dano(): #TODO RESOLVER BUG DE INVICIBILITY FRAME
 		sprite.modulate = Color.WHITE
 		await get_tree().create_timer(0.1).timeout
 	invencivel = false
-	set_collision_mask_value(2, true)
-	set_collision_mask_value(6, true)
-
-
 		
 func _physics_process(delta):
 	get_input()
@@ -47,16 +40,8 @@ func _physics_process(delta):
 		atirar()
 	if collision_info:
 		var objeto_atingido = collision_info.get_collider() #Pega o asteroide
-		if objeto_atingido.has_method("explodir"): #Responsável por achar o método que destroi o asteroide.
-			if "velocity" in objeto_atingido:	#Faz com que quando um asteroide é atingido, ele para de se mexer (roda a animação parado), resolve bug de empurrar a nave
-				objeto_atingido.velocity = Vector2.ZERO
-			if "direcao" in objeto_atingido:
-				objeto_atingido.direcao = Vector2.ZERO
-			objeto_atingido.explodir()
+		if objeto_atingido.has_method("morrer"): # Feito para verificar se o objeto que colidiu é o boss, se for toma dano
 			tomar_dano()
-		elif objeto_atingido.has_method("morrer"): # Feito para verificar se o objeto que colidiu é o boss, se for toma dano
-			tomar_dano()
-			
 		#var collision_point = collision_info.get_position()
 		
 func _atualizar_hud():
@@ -72,6 +57,17 @@ func atirar():
 	tiro.global_position =  ponto_de_tiro.global_position
 	tiro.global_rotation = global_rotation
 	recarregando = true	
-	await get_tree().create_timer(0.3).timeout
+	await get_tree().create_timer(0.25).timeout
 	recarregando = false
 	
+
+
+func _on_hurt_box_body_entered(body: Node2D) -> void:
+	if invencivel:
+		return 
+	
+	if body.has_method("explodir"):
+		if "direcao" in body:
+			body.direcao = Vector2.ZERO
+		body.explodir()
+		tomar_dano()

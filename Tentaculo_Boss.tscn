@@ -40,6 +40,7 @@ position = Vector2(290, 126.625)
 shape = SubResource("RectangleShape2D_kohxs")
 
 [node name="CollisionShape2D2" type="CollisionShape2D" parent="." unique_id=1898313246]
+z_index = -1
 position = Vector2(328, 73)
 shape = SubResource("CircleShape2D_c2nmb")
 
@@ -67,3 +68,5 @@ shape = SubResource("RectangleShape2D_agj4e")
 position = Vector2(48, 103)
 scale = Vector2(0.1438247, 0.111420006)
 shape = SubResource("CircleShape2D_a0cvh")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
