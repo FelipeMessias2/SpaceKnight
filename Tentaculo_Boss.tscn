@@ -1,0 +1,69 @@
+[gd_scene format=3 uid="uid://tv75v13hnbu0"]
+
+[ext_resource type="Texture2D" uid="uid://c3frp1gicl5ih" path="res://Arte/Arte_Inimigos/Arte_Tentaculo.png" id="1_c2nmb"]
+[ext_resource type="Script" uid="uid://b4phy1xhor5ye" path="res://tentaculo_boss.gd" id="1_kohxs"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_kohxs"]
+size = Vector2(117, 36.75)
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_c2nmb"]
+radius = 59.008472
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_nmdc2"]
+size = Vector2(924.7368, 475.16513)
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_s1ye8"]
+radius = 347.64526
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_epnx0"]
+radius = 281.71347
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_agj4e"]
+size = Vector2(208.80331, 1292.4071)
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_a0cvh"]
+radius = 375.45706
+
+[node name="Node2D" type="Area2D" unique_id=1148522694]
+collision_layer = 32
+collision_mask = 33
+script = ExtResource("1_kohxs")
+metadata/_edit_group_ = true
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1187849452]
+position = Vector2(193.56256, 85.64671)
+scale = Vector2(0.1438247, 0.111420006)
+texture = ExtResource("1_c2nmb")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1145408562]
+position = Vector2(290, 126.625)
+shape = SubResource("RectangleShape2D_kohxs")
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="." unique_id=1898313246]
+position = Vector2(328, 73)
+shape = SubResource("CircleShape2D_c2nmb")
+
+[node name="CollisionShape2D3" type="CollisionShape2D" parent="." unique_id=286858483]
+position = Vector2(149.5, 37.47145)
+scale = Vector2(0.1438247, 0.111420006)
+shape = SubResource("RectangleShape2D_nmdc2")
+
+[node name="CollisionShape2D4" type="CollisionShape2D" parent="." unique_id=675752990]
+position = Vector2(223, 89)
+scale = Vector2(0.1438247, 0.111420006)
+shape = SubResource("CircleShape2D_s1ye8")
+
+[node name="CollisionShape2D5" type="CollisionShape2D" parent="." unique_id=352072482]
+position = Vector2(84, 70)
+scale = Vector2(0.1438247, 0.111420006)
+shape = SubResource("CircleShape2D_epnx0")
+
+[node name="CollisionShape2D6" type="CollisionShape2D" parent="." unique_id=1119802699]
+position = Vector2(18.984467, 98)
+scale = Vector2(0.1438247, 0.111420006)
+shape = SubResource("RectangleShape2D_agj4e")
+
+[node name="CollisionShape2D7" type="CollisionShape2D" parent="." unique_id=266178929]
+position = Vector2(48, 103)
+scale = Vector2(0.1438247, 0.111420006)
+shape = SubResource("CircleShape2D_a0cvh")

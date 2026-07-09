@@ -1,13 +1,15 @@
 extends CharacterBody2D
 var speed = 10.0
 var dano = 1
-var vida_boss = 30 # Se mudar a vida, deve mudar o max progress bar(que diz mostra o quanto de vida o boss têm)
+var vida_boss = 100 # Se mudar a vida, deve mudar o max progress bar(que diz mostra o quanto de vida o boss têm)
 var tempo = 0.0
 var posicao_inicial_y = 0.0
 @onready var sprite = $Sprite2D  #Sprite do boss
 @onready var barra_de_vida = $HUD_Boss/ProgressBar
 signal morreu
 func _ready() -> void:
+	barra_de_vida.max_value = vida_boss
+	barra_de_vida.value = vida_boss
 	posicao_inicial_y = sprite.position.y
 	
 func _physics_process(delta: float) -> void:
@@ -32,3 +34,6 @@ func tomar_dano() -> void:
 	if vida_boss < 1:
 		morrer()
   
+func tentaculo() -> void: #Função que summonará ataque de tentáculo
+	pass
+	
