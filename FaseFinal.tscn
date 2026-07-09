@@ -6,11 +6,15 @@
 [ext_resource type="Texture2D" uid="uid://8iylpqrypol6" path="res://ship-sheet.png" id="4_ualwc"]
 [ext_resource type="PackedScene" uid="uid://cciuii2705wnw" path="res://CenaTiroNave.tscn" id="5_p3x7q"]
 [ext_resource type="PackedScene" uid="uid://3ot1mi546sua" path="res://AsteroideCena.tscn" id="6_krxg6"]
-[ext_resource type="Script" path="res://hud_fase2.gd" id="7_hos33"]
+[ext_resource type="Script" uid="uid://b7bjwl061cyfl" path="res://hud_fase2.gd" id="7_hos33"]
 [ext_resource type="PackedScene" uid="uid://c1vhwl7loy3rn" path="res://Boss.tscn" id="8_ixc55"]
+[ext_resource type="PackedScene" uid="uid://tv75v13hnbu0" path="res://Tentaculo_Boss.tscn" id="9_f87dk"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_v1cut"]
 size = Vector2(104, 102)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_f87dk"]
+size = Vector2(9.90476, 9.71428)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_opxf0"]
 size = Vector2(115.5, 1.0500022)
@@ -43,7 +47,7 @@ texture = ExtResource("2_twa0l")
 
 [node name="Nave" type="CharacterBody2D" parent="." unique_id=394906973]
 position = Vector2(-165, 125)
-collision_mask = 39
+collision_mask = 7
 script = ExtResource("3_w0nxo")
 metadata/_edit_group_ = true
 
@@ -61,6 +65,15 @@ region_rect = Rect2(95.66324, 0, 32.33676, 32)
 
 [node name="PontoDeTiro" type="Marker2D" parent="Nave" unique_id=1851565184]
 position = Vector2(312, 215)
+
+[node name="HurtBox" type="Area2D" parent="Nave" unique_id=723232689]
+position = Vector2(382, 206)
+scale = Vector2(10.5, 10.5)
+collision_mask = 32
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Nave/HurtBox" unique_id=913747891]
+position = Vector2(-11.523812, 0.95238686)
+shape = SubResource("RectangleShape2D_f87dk")
 
 [node name="TiroNave_Cena" parent="." unique_id=1683016526 instance=ExtResource("5_p3x7q")]
 position = Vector2(1402, 103)
@@ -138,7 +151,6 @@ offset_bottom = 51.0
 theme_override_colors/font_color = Color(0.078431375, 0.34117648, 0.42352942, 1)
 theme_override_styles/background = SubResource("StyleBoxFlat_ixc55")
 theme_override_styles/fill = SubResource("StyleBoxFlat_f87dk")
-max_value = 30.0
 value = 30.0
 show_percentage = false
 
@@ -161,8 +173,18 @@ horizontal_alignment = 1
 vertical_alignment = 1
 uppercase = true
 
+[node name="Tentaculo" parent="." unique_id=495496525 instance=ExtResource("9_f87dk")]
+position = Vector2(-606, 741)
+
+[node name="Timer_Tentaculo" type="Timer" parent="." unique_id=2108051471]
+wait_time = 5.0
+autostart = true
+
 [connection signal="naveDestruida" from="Nave" to="." method="_on_nave_nave_destruida"]
 [connection signal="tomouDano" from="Nave" to="." method="_on_nave_tomou_dano"]
+[connection signal="body_entered" from="Nave/HurtBox" to="Nave" method="_on_hurt_box_body_entered"]
 [connection signal="timeout" from="TimerAsteroideHorizontal" to="." method="_on_timer_asteroide_horizontal_timeout"]
 [connection signal="timeout" from="TimerAsteroideVertical" to="." method="_on_timer_asteroide_vertical_timeout"]
 [connection signal="morreu" from="Boss" to="." method="_on_boss_morreu"]
+[connection signal="body_entered" from="Tentaculo" to="." method="_on_tentaculo_body_entered"]
+[connection signal="timeout" from="Timer_Tentaculo" to="." method="_on_timer_tentaculo_timeout"]
