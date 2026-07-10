@@ -7,6 +7,7 @@
 [ext_resource type="PackedScene" uid="uid://3ot1mi546sua" path="res://AsteroideCena.tscn" id="4_m3yir"]
 [ext_resource type="PackedScene" uid="uid://cciuii2705wnw" path="res://CenaTiroNave.tscn" id="5_oe2ed"]
 [ext_resource type="Script" uid="uid://b7bjwl061cyfl" path="res://hud_fase2.gd" id="8_j5bp8"]
+[ext_resource type="AudioStream" uid="uid://cswjq8dgc0qxf" path="res://Som/Musica_Fase1.mp3" id="8_p4oxt"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_m3yir"]
 size = Vector2(104, 102)
@@ -130,6 +131,9 @@ color = Color(0.95, 0.15, 0.2, 1)
 [node name="TimerAsteroideVertical" type="Timer" parent="." unique_id=373477702]
 wait_time = 0.7
 autostart = true
+
+[node name="MusicaN" type="AudioStreamPlayer" parent="." unique_id=1002231869]
+stream = ExtResource("8_p4oxt")
 
 [connection signal="naveDestruida" from="Nave" to="." method="_on_nave_nave_destruida"]
 [connection signal="tomouDano" from="Nave" to="." method="_on_nave_tomou_dano"]

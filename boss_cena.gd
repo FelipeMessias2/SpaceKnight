@@ -6,7 +6,7 @@ const TENTACULO_CENA = preload("res://Tentaculo_Boss.tscn")
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	pass # Replace with function body.
+	$MusicaB.play()
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
@@ -39,6 +39,7 @@ func _on_boss_morreu() -> void: #Quando o boss morre, os asteroides param de vir
 	$Timer_Tentaculo.stop()
 	$TimerAsteroideHorizontal.stop()
 	$TimerAsteroideVertical.stop()	
+	$MusicaB.stop()
 	fase_concluida.emit() #Será mandado para o nodo principal da cenaP
 	
 func _on_tentaculo_body_entered(body: Node2D) -> void:

@@ -4,7 +4,7 @@ signal player_morreu #Sinal que manda quando o player morre.
 const ASTEROIDE_CENA = preload("res://AsteroideCena.tscn")
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	pass # Replace with function body.
+	$MusicaN.play()
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
@@ -13,6 +13,7 @@ func _process(delta: float) -> void:
 func _on_timer_fase_timeout() -> void:#Responsável por fazer a fase da nave se encerrar depois de um período de tempo
 	$TimerAsteroideHorizontal.stop()
 	$TimerAsteroideVertical.stop()
+	$MusicaN.stop()
 	fase_concluida.emit()
 
 func _on_timer_asteroide_timeout() -> void:#Responsável por spawnar os asteroides horizontalmente
