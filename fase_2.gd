@@ -156,3 +156,17 @@ func _terminar() -> void:
 	_terminou = true
 	Sfx.tocar("porta")
 	fase_concluida.emit()
+signal player_morreu
+
+# Called when the node enters the scene tree for the first time.
+func _ready() -> void:
+	pass # Replace with function body.
+
+
+# Called every frame. 'delta' is the elapsed time since the previous frame.
+func _process(delta: float) -> void:
+	pass
+
+
+func _on_player_player_morreu() -> void:
+	player_morreu.emit() 

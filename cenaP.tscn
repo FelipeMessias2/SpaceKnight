@@ -1,6 +1,7 @@
 [gd_scene format=3 uid="uid://dqdr61cooeom5"]
 
 [ext_resource type="Script" uid="uid://n43jo6s8aj8i" path="res://cena_p.gd" id="1_vomve"]
+[ext_resource type="PackedScene" uid="uid://ba201coucfc4b" path="res://Creditos.tscn" id="3_rimhs"]
 [ext_resource type="PackedScene" uid="uid://dopooayle3rxu" path="res://GameOver.tscn" id="5_2y7k1"]
 
 [node name="Game" type="Node2D" unique_id=307514444]
@@ -18,3 +19,12 @@ offset_left = 3.0
 offset_top = 3.0
 offset_right = 3.0
 offset_bottom = 3.0
+
+[node name="CanvasLayer2" type="CanvasLayer" parent="." unique_id=509243815]
+
+[node name="Creditos" parent="CanvasLayer2" unique_id=140771688 instance=ExtResource("3_rimhs")]
+offset_left = -445.0
+offset_top = -92.0
+offset_right = -445.0
+offset_bottom = -92.0
+

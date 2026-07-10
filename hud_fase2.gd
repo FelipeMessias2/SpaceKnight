@@ -2,6 +2,7 @@ extends CanvasLayer
 ## HUD simples de corações (ColorRects) usado nas fases da nave (Fase 1 e Boss).
 ## Mantido separado do HUD das fases de plataforma de propósito.
 
+
 @onready var c1 = $Coracao1
 @onready var c2 = $Coracao2
 @onready var c3 = $Coracao3

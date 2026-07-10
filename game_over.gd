@@ -1,8 +1,4 @@
 extends Control
-## Tela de Game Over. "Tentar Novamente" reinicia a fase atual;
-## "Menu" volta ao menu principal e zera o progresso.
-## O botão principal recebe FOCO ao aparecer: o jogo inteiro é jogado no
-## teclado, então ESPACO/ENTER precisam funcionar aqui também.
 
 func _ready() -> void:
 	visibility_changed.connect(_ao_mudar_visibilidade)

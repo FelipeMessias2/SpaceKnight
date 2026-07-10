@@ -7,9 +7,18 @@
 [ext_resource type="PackedScene" uid="uid://3ot1mi546sua" path="res://AsteroideCena.tscn" id="4_m3yir"]
 [ext_resource type="PackedScene" uid="uid://cciuii2705wnw" path="res://CenaTiroNave.tscn" id="5_oe2ed"]
 [ext_resource type="Script" uid="uid://blmv10rvvp4kv" path="res://hud_fase2.gd" id="8_j5bp8"]
+[ext_resource type="Texture2D" uid="uid://dcmcisgui78dq" path="res://Arte/FundoEspaço.png" id="2_aj3mx"]
+[ext_resource type="Texture2D" uid="uid://8iylpqrypol6" path="res://ship-sheet.png" id="2_g3hxh"]
+[ext_resource type="PackedScene" uid="uid://3ot1mi546sua" path="res://AsteroideCena.tscn" id="4_m3yir"]
+[ext_resource type="PackedScene" uid="uid://cciuii2705wnw" path="res://CenaTiroNave.tscn" id="5_oe2ed"]
+[ext_resource type="Script" uid="uid://b7bjwl061cyfl" path="res://hud_fase2.gd" id="8_j5bp8"]
+[ext_resource type="AudioStream" uid="uid://cswjq8dgc0qxf" path="res://Som/Musica_Fase1.mp3" id="8_p4oxt"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_m3yir"]
 size = Vector2(104, 102)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_miiii"]
+size = Vector2(104, 101)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_aj3mx"]
 size = Vector2(115.5, 1.0500022)
@@ -36,6 +45,7 @@ texture = ExtResource("2_aj3mx")
 [node name="Nave" type="CharacterBody2D" parent="." unique_id=1078614421]
 position = Vector2(-62, -1)
 collision_mask = 37
+collision_mask = 5
 script = ExtResource("1_e3idd")
 metadata/_edit_group_ = true
 
@@ -54,6 +64,13 @@ region_rect = Rect2(95.66324, 0, 32.33676, 32)
 [node name="PontoDeTiro" type="Marker2D" parent="Nave" unique_id=348085185]
 position = Vector2(312, 215)
 
+[node name="HurtBox" type="Area2D" parent="Nave" unique_id=1098182828]
+collision_mask = 32
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Nave/HurtBox" unique_id=1866001623]
+position = Vector2(261, 215.5)
+shape = SubResource("RectangleShape2D_miiii")
+
 [node name="TiroNave_Cena" parent="." unique_id=1683016526 instance=ExtResource("5_oe2ed")]
 position = Vector2(-305, 608)
 
@@ -65,7 +82,7 @@ wait_time = 0.3
 autostart = true
 
 [node name="TimerFase" type="Timer" parent="." unique_id=1671775047]
-wait_time = 5.0
+wait_time = 50.0
 one_shot = true
 autostart = true
 
@@ -123,6 +140,12 @@ autostart = true
 
 [connection signal="naveDestruida" from="Nave" to="." method="_on_nave_nave_destruida"]
 [connection signal="tomouDano" from="Nave" to="." method="_on_nave_tomou_dano"]
+[node name="MusicaN" type="AudioStreamPlayer" parent="." unique_id=1002231869]
+stream = ExtResource("8_p4oxt")
+
+[connection signal="naveDestruida" from="Nave" to="." method="_on_nave_nave_destruida"]
+[connection signal="tomouDano" from="Nave" to="." method="_on_nave_tomou_dano"]
+[connection signal="body_entered" from="Nave/HurtBox" to="Nave" method="_on_hurt_box_body_entered"]
 [connection signal="timeout" from="TimerAsteroideHorizontal" to="." method="_on_timer_asteroide_timeout"]
 [connection signal="timeout" from="TimerFase" to="." method="_on_timer_fase_timeout"]
 [connection signal="timeout" from="TimerAsteroideVertical" to="." method="_on_timer_asteroide_vertical_timeout"]
