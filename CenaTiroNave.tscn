@@ -1,0 +1,37 @@
+[gd_scene format=3 uid="uid://cciuii2705wnw"]
+
+[ext_resource type="Texture2D" uid="uid://cfqmj754kll2g" path="res://Arte/Arte_espacial/Effects/Fx_04.png" id="1_7udfd"]
+[ext_resource type="Script" uid="uid://bf38xmb0jwrn2" path="res://cena_tiro_nave.gd" id="1_737xn"]
+[ext_resource type="Script" uid="uid://510utw8pfoso" path="res://tiro_nave_area_2d.gd" id="1_cj243"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_cj243"]
+size = Vector2(29, 8)
+
+[node name="Node2D" type="Node2D" unique_id=1683016526]
+script = ExtResource("1_737xn")
+
+[node name="TiroNave_Area2D" type="Area2D" parent="." unique_id=1781541704]
+visibility_layer = 64
+position = Vector2(-33, -30)
+collision_layer = 64
+collision_mask = 34
+script = ExtResource("1_cj243")
+metadata/_edit_group_ = true
+
+[node name="Sprite2D" type="Sprite2D" parent="TiroNave_Area2D" unique_id=1942893552]
+modulate = Color(0.1764706, 0.3372549, 1, 1)
+position = Vector2(48.5, 34)
+scale = Vector2(1.75, 1)
+texture = ExtResource("1_7udfd")
+region_enabled = true
+region_rect = Rect2(86.36288, 24.381248, 20.34832, 13.405952)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="TiroNave_Area2D" unique_id=1035502110]
+position = Vector2(47.5, 34)
+shape = SubResource("RectangleShape2D_cj243")
+
+[node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="TiroNave_Area2D" unique_id=890767352]
+position = Vector2(44, 36)
+rect = Rect2(-11, -6, 29, 8)
+
+[connection signal="body_entered" from="TiroNave_Area2D" to="." method="_on_area_2d_body_entered"]

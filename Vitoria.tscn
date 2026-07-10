@@ -1,0 +1,56 @@
+[gd_scene format=3 uid="uid://ck0vitoria0001"]
+
+[ext_resource type="Script" path="res://vitoria.gd" id="1"]
+[ext_resource type="FontFile" path="res://fontes/PressStart2P-Regular.ttf" id="2"]
+
+[node name="TelaVitoria" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+script = ExtResource("1")
+
+[node name="Fundo" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+color = Color(0.03, 0.05, 0.09, 1)
+
+[node name="Titulo" type="Label" parent="."]
+layout_mode = 0
+offset_left = 120.0
+offset_top = 90.0
+offset_right = 1030.0
+offset_bottom = 170.0
+theme_override_colors/font_color = Color(0.4, 0.9, 1, 1)
+theme_override_fonts/font = ExtResource("2")
+theme_override_font_sizes/font_size = 46
+text = "HEINGRIM CAIU"
+horizontal_alignment = 1
+
+[node name="Epilogo" type="Label" parent="."]
+layout_mode = 0
+offset_left = 160.0
+offset_top = 210.0
+offset_right = 992.0
+offset_bottom = 430.0
+theme_override_colors/font_color = Color(0.9, 0.9, 0.95, 1)
+theme_override_constants/line_spacing = 12
+theme_override_fonts/font = ExtResource("2")
+theme_override_font_sizes/font_size = 14
+text = "Os destroços de Veldra silenciaram.\n\nKael não recuperou seu mundo — mas garantiu que o Devorador nunca mais tirasse outro.\n\nV.E.R.A. traçou uma nova rota. Havia mais galáxias a proteger.\n\nE o ultimo Space Knight ainda tinha combustivel."
+autowrap_mode = 2
+horizontal_alignment = 1
+
+[node name="Button" type="Button" parent="."]
+layout_mode = 0
+offset_left = 400.0
+offset_top = 470.0
+offset_right = 750.0
+offset_bottom = 530.0
+theme_override_fonts/font = ExtResource("2")
+theme_override_font_sizes/font_size = 20
+text = "JOGAR DE NOVO"
+
+[connection signal="pressed" from="Button" to="." method="_on_button_pressed"]

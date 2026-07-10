@@ -1,0 +1,34 @@
+[gd_scene format=3 uid="uid://ck0alavanca001"]
+
+[ext_resource type="Script" path="res://alavanca.gd" id="1"]
+[ext_resource type="Texture2D" path="res://Arte/gerada/alavanca_off.png" id="2"]
+[ext_resource type="FontFile" path="res://fontes/PressStart2P-Regular.ttf" id="3"]
+
+[sub_resource type="RectangleShape2D" id="rs"]
+size = Vector2(60, 80)
+
+[node name="Alavanca" type="Area2D"]
+collision_layer = 0
+collision_mask = 1
+script = ExtResource("1")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, -30)
+shape = SubResource("rs")
+
+[node name="Visual" type="Sprite2D" parent="."]
+texture = ExtResource("2")
+position = Vector2(0, -20)
+
+[node name="Aviso" type="Label" parent="."]
+offset_left = -14.0
+offset_top = -74.0
+offset_right = 20.0
+offset_bottom = -58.0
+theme_override_colors/font_color = Color(0.42, 0.9, 0.98, 1)
+theme_override_fonts/font = ExtResource("3")
+theme_override_font_sizes/font_size = 10
+text = "[E]"
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[connection signal="body_exited" from="." to="." method="_on_body_exited"]

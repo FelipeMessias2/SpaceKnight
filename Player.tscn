@@ -1,0 +1,136 @@
+[gd_scene format=3 uid="uid://b3j4u30wxcfgv"]
+
+[ext_resource type="Script" uid="uid://c8bted1ayjaog" path="res://player_fase2.gd" id="1"]
+[ext_resource type="Texture2D" uid="uid://gipe5hipeukt" path="res://Arte/sprites/kael_parado1.png" id="2"]
+[ext_resource type="Texture2D" uid="uid://d0wbgy7fac555" path="res://Arte/sprites/kael_parado2.png" id="3"]
+[ext_resource type="Texture2D" uid="uid://yrwt8domwduq" path="res://Arte/sprites/kael_pular.png" id="9"]
+[ext_resource type="Texture2D" uid="uid://csuxqk4qgefsr" path="res://Arte/sprites/kael_cair.png" id="10"]
+[ext_resource type="Texture2D" uid="uid://be136ikh0d7nn" path="res://Arte/sprites/kael_atacar_a1.png" id="11"]
+[ext_resource type="Texture2D" uid="uid://brwhb8682fgvr" path="res://Arte/sprites/kael_atacar_a2.png" id="12"]
+[ext_resource type="Texture2D" uid="uid://bmpiebebyera4" path="res://Arte/sprites/kael_atacar_a3.png" id="13"]
+[ext_resource type="Texture2D" uid="uid://cnleq8fv1j7nd" path="res://Arte/sprites/kael_atacar_b1.png" id="14"]
+[ext_resource type="Texture2D" uid="uid://cby88kr3s33ud" path="res://Arte/sprites/kael_atacar_b2.png" id="15"]
+[ext_resource type="Texture2D" uid="uid://b1i7vukd13qcy" path="res://Arte/sprites/kael_atacar_b3.png" id="16"]
+[ext_resource type="Texture2D" uid="uid://bo4imkuxoovtb" path="res://Arte/sprites/kael_dano.png" id="17"]
+
+[sub_resource type="CapsuleShape2D" id="cap"]
+radius = 16.0
+height = 80.0
+
+[sub_resource type="SpriteFrames" id="sf"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3")
+}, {
+"duration": 1.0,
+"texture": ExtResource("9")
+}],
+"loop": true,
+"name": &"andar",
+"speed": 9.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("11")
+}, {
+"duration": 1.0,
+"texture": ExtResource("12")
+}, {
+"duration": 1.0,
+"texture": ExtResource("13")
+}],
+"loop": false,
+"name": &"atacar",
+"speed": 13.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("14")
+}, {
+"duration": 1.0,
+"texture": ExtResource("15")
+}, {
+"duration": 1.0,
+"texture": ExtResource("16")
+}],
+"loop": false,
+"name": &"atacar2",
+"speed": 13.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("10")
+}],
+"loop": true,
+"name": &"cair",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("17")
+}],
+"loop": false,
+"name": &"dano",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("17")
+}],
+"loop": false,
+"name": &"morte",
+"speed": 4.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2")
+}],
+"loop": true,
+"name": &"parado",
+"speed": 4.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("9")
+}],
+"loop": true,
+"name": &"pular",
+"speed": 5.0
+}]
+
+[sub_resource type="RectangleShape2D" id="atk"]
+size = Vector2(52, 56)
+
+[node name="Player" type="CharacterBody2D" unique_id=1503132210]
+script = ExtResource("1")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=2093948280]
+position = Vector2(0, -40)
+shape = SubResource("cap")
+
+[node name="Anim" type="AnimatedSprite2D" parent="." unique_id=847425381]
+position = Vector2(0, -48)
+sprite_frames = SubResource("sf")
+animation = &"atacar"
+autoplay = "parado"
+
+[node name="HitboxAtaque" type="Area2D" parent="." unique_id=905501617]
+position = Vector2(48, -40)
+collision_layer = 0
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HitboxAtaque" unique_id=952848195]
+shape = SubResource("atk")
+disabled = true
+
+[node name="Camera2D" type="Camera2D" parent="." unique_id=1938661829]
+position = Vector2(0, -40)
+zoom = Vector2(1.2, 1.2)
+position_smoothing_enabled = true
+position_smoothing_speed = 8.0
+
+[connection signal="body_entered" from="HitboxAtaque" to="." method="_on_hitbox_ataque_body_entered"]

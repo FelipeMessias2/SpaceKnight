@@ -1,0 +1,20 @@
+[gd_scene format=3 uid="uid://dqdr61cooeom5"]
+
+[ext_resource type="Script" uid="uid://n43jo6s8aj8i" path="res://cena_p.gd" id="1_vomve"]
+[ext_resource type="PackedScene" uid="uid://dopooayle3rxu" path="res://GameOver.tscn" id="5_2y7k1"]
+
+[node name="Game" type="Node2D" unique_id=307514444]
+script = ExtResource("1_vomve")
+
+[node name="Overlay" type="CanvasLayer" parent="."]
+layer = 8
+process_mode = 3
+
+[node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=797135150]
+layer = 10
+
+[node name="GameOver" parent="CanvasLayer" unique_id=106510237 instance=ExtResource("5_2y7k1")]
+offset_left = 3.0
+offset_top = 3.0
+offset_right = 3.0
+offset_bottom = 3.0

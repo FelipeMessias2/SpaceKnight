@@ -1,0 +1,6 @@
+[gd_scene format=3 uid="uid://ck0espinhos001"]
+
+[ext_resource type="Script" path="res://espinhos.gd" id="1"]
+
+[node name="Espinhos" type="Area2D"]
+script = ExtResource("1")

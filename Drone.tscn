@@ -1,0 +1,39 @@
+[gd_scene format=3 uid="uid://ck0drone00001"]
+
+[ext_resource type="Script" path="res://drone.gd" id="1"]
+[ext_resource type="Texture2D" path="res://Arte/gerada/drone1.png" id="2"]
+[ext_resource type="Texture2D" path="res://Arte/gerada/drone2.png" id="3"]
+
+[sub_resource type="SpriteFrames" id="sf"]
+animations = [{
+"frames": [{"duration": 1.0, "texture": ExtResource("2")}, {"duration": 1.0, "texture": ExtResource("3")}],
+"loop": true, "name": &"voar", "speed": 10.0
+}]
+
+[sub_resource type="RectangleShape2D" id="c"]
+size = Vector2(28, 22)
+
+[sub_resource type="RectangleShape2D" id="area"]
+size = Vector2(30, 24)
+
+[node name="Drone" type="CharacterBody2D"]
+collision_layer = 2
+collision_mask = 0
+script = ExtResource("1")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("c")
+
+[node name="Anim" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("sf")
+animation = &"voar"
+autoplay = "voar"
+
+[node name="CorpoDrone" type="Area2D" parent="."]
+collision_layer = 0
+collision_mask = 1
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="CorpoDrone"]
+shape = SubResource("area")
+
+[connection signal="body_entered" from="CorpoDrone" to="." method="_on_corpo_drone_body_entered"]

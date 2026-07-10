@@ -1,0 +1,96 @@
+================================================================
+  SPACE KNIGHT — Episódio I: A Última Rota
+  Trabalho de Projeto de Desenvolvimento de Jogos — PUCRS
+================================================================
+
+REPOSITÓRIO
+-----------
+  >>> COLE AQUI A URL DO SEU REPOSITÓRIO GIT <<<
+  (ex.: https://github.com/seu-usuario/space-knight)
+
+
+COMO RODAR
+----------
+  1. Abra o projeto no Godot 4.6 (Project > Import > selecione o
+	 project.godot desta pasta).
+  2. Na PRIMEIRA vez, deixe o editor terminar de importar os assets
+	 (barra de progresso no canto inferior direito).
+  3. Pressione F5 (ou o botão "Rodar Projeto"). O jogo começa pelo
+	 Menu Principal.
+
+
+CONTROLES
+---------
+  Fases de plataforma (Estação e Superfície):
+	A / D ou setas .... mover
+	W / seta cima ..... pular  (segure para pular mais alto)
+	ESPAÇO ............ atacar com a espada
+	E ................. interagir (alavancas, terminais, hologramas)
+
+  Fases de nave (Tempestade e Boss):
+	W A S D / setas ... mover a nave
+	ESPAÇO ou clique .. atirar
+
+  Diálogos e telas:
+	ESPAÇO / ENTER / E  avançar
+
+
+ESTRUTURA DO JOGO
+-----------------
+  Menu > Introdução (crawl) > Fase 1 (nave) > Fase 2 (estação,
+  gravidade invertida) > Fase 3 (superfície, ácido e molas) >
+  Fase 4 (boss Heingrim) > Vitória.
+
+  Entre as fases há cartões de história que costuram a narrativa
+  (atendendo ao feedback da Parte 2 sobre ligação entre fases).
+
+
+MÚSICAS (clássicas, domínio público)
+------------------------------------
+  A trilha usa peças clássicas em domínio público, sintetizadas do
+  zero para o projeto (nenhuma gravação de terceiros foi usada):
+	  menu.ogg ...... Assim Falou Zaratustra (R. Strauss, 1896),
+					  a abertura de "2001: Uma Odisseia no Espaço"
+	  fase1.ogg ..... Cavalgada das Valquírias (R. Wagner, 1856)
+	  fase2.ogg ..... Dies Irae, do Réquiem K.626 (W. A. Mozart, 1791)
+	  fase3.ogg ..... Sinfonia n.º 7, 2.º mov. Allegretto
+					  (L. van Beethoven, 1812)
+	  boss.ogg ...... Mars, o Portador da Guerra, de "Os Planetas"
+					  (G. Holst, 1916)
+	  vitoria.ogg ... Ode à Alegria, Sinfonia n.º 9
+					  (L. van Beethoven, 1824)
+  Para trocar qualquer faixa, basta substituir o .ogg mantendo
+  EXATAMENTE o mesmo nome. Os efeitos sonoros ficam em audio/sfx/.
+
+
+COMO O NÍVEL É MONTADO (para quem for editar)
+---------------------------------------------
+  As Fases 2 e 3 são construídas por código: a geometria (chão,
+  paredes, plataformas) e os objetos (espinhos, checkpoints, molas,
+  etc.) são listados em arrays no topo de fase_2.gd e fase_3.gd.
+  Para mudar o mapa, edite os números desses arrays — cada Rect2 é
+  (x, y, largura, altura) em pixels. Não é preciso mexer na cena.
+
+
+SE ALGO ESTRANHO ACONTECER (música muda, tela preta, erros)
+-----------------------------------------------------------
+  Feche o Godot, APAGUE a pasta oculta ".godot" dentro do projeto e
+  abra de novo. Essa pasta é só cache de importação: o Godot a
+  reconstrói sozinho. Um cache velho (de outra máquina ou de outra
+  versão) era a causa das músicas não tocarem e de travamentos na
+  troca de fase / tela de Game Over.
+
+
+CRÉDITOS
+--------
+  Protagonista (Kael) e alienígena: arte da equipe, fatiada em
+	  frames individuais em Arte/sprites/.
+  Cenário da Fase 3: Arte/ArteFundoFase3.png — arte da equipe.
+  Sprite da nave e do boss: arte original da dupla (Parte 2).
+  Demais tiles/objetos: gerados proceduralmente para o projeto.
+  Músicas: peças clássicas em domínio público (ver seção acima),
+	  sintetizadas do zero para o projeto.
+  Fonte: "Press Start 2P" (SIL Open Font License) — ver
+		 fontes/OFL.txt.
+
+  Desenvolvido em Godot Engine 4.6.
