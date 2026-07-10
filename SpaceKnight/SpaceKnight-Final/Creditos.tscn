@@ -1,0 +1,40 @@
+[gd_scene format=3 uid="uid://ba201coucfc4b"]
+
+[node name="Creditos" type="Control" unique_id=140771688]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="ColorRect" type="ColorRect" parent="." unique_id=1434583258]
+layout_mode = 0
+offset_left = -3.0
+offset_top = 2.0
+offset_right = 1151.0
+offset_bottom = 647.0
+color = Color(0.7490196, 0.101960786, 0.26666668, 1)
+
+[node name="CenterContainer" type="CenterContainer" parent="." unique_id=1760096655]
+layout_mode = 0
+offset_left = 154.0
+offset_top = 16.0
+offset_right = 967.0
+offset_bottom = 520.0
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CenterContainer" unique_id=1939059887]
+layout_mode = 2
+size_flags_stretch_ratio = 0.0
+theme_override_constants/separation = 100
+
+[node name="Label" type="Label" parent="CenterContainer/VBoxContainer" unique_id=518847415]
+layout_mode = 2
+theme_override_font_sizes/font_size = 130
+text = "GAME OVER"
+
+[node name="Button" type="Button" parent="CenterContainer/VBoxContainer" unique_id=263962303]
+layout_mode = 2
+theme_override_font_sizes/font_size = 50
+text = "<Tentar Novamente?>"
+flat = true

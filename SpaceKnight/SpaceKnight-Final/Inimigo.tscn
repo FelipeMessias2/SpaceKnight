@@ -1,0 +1,104 @@
+[gd_scene format=3 uid="uid://udu36q41wgyw"]
+
+[ext_resource type="Script" path="res://inimigo.gd" id="1"]
+[ext_resource type="Texture2D" path="res://Arte/sprites/purple_idle1.png" id="2"]
+[ext_resource type="Texture2D" path="res://Arte/sprites/purple_idle2.png" id="3"]
+[ext_resource type="Texture2D" path="res://Arte/sprites/purple_idle3.png" id="4"]
+[ext_resource type="Texture2D" path="res://Arte/sprites/purple_idle4.png" id="5"]
+[ext_resource type="Texture2D" path="res://Arte/sprites/purple_andar1.png" id="6"]
+[ext_resource type="Texture2D" path="res://Arte/sprites/purple_andar2.png" id="7"]
+[ext_resource type="Texture2D" path="res://Arte/sprites/purple_andar3.png" id="8"]
+[ext_resource type="Texture2D" path="res://Arte/sprites/purple_andar4.png" id="9"]
+[ext_resource type="Texture2D" path="res://Arte/sprites/purple_andar5.png" id="10"]
+[ext_resource type="Texture2D" path="res://Arte/sprites/purple_andar6.png" id="11"]
+[ext_resource type="Texture2D" path="res://Arte/sprites/purple_atacar1.png" id="12"]
+[ext_resource type="Texture2D" path="res://Arte/sprites/purple_atacar2.png" id="13"]
+[ext_resource type="Texture2D" path="res://Arte/sprites/purple_atacar3.png" id="14"]
+[ext_resource type="Texture2D" path="res://Arte/sprites/purple_atacar4.png" id="15"]
+[ext_resource type="Texture2D" path="res://Arte/sprites/purple_dano1.png" id="16"]
+[ext_resource type="Texture2D" path="res://Arte/sprites/purple_dano2.png" id="17"]
+[ext_resource type="Texture2D" path="res://Arte/sprites/purple_dano3.png" id="18"]
+[ext_resource type="Texture2D" path="res://Arte/sprites/purple_dano4.png" id="19"]
+[ext_resource type="Texture2D" path="res://Arte/sprites/purple_morte1.png" id="20"]
+[ext_resource type="Texture2D" path="res://Arte/sprites/purple_morte2.png" id="21"]
+[ext_resource type="Texture2D" path="res://Arte/sprites/purple_morte3.png" id="22"]
+[ext_resource type="Texture2D" path="res://Arte/sprites/purple_morte4.png" id="23"]
+
+[sub_resource type="SpriteFrames" id="sf"]
+animations = [{
+"frames": [{"duration": 1.0, "texture": ExtResource("6")}, {"duration": 1.0, "texture": ExtResource("7")}, {"duration": 1.0, "texture": ExtResource("8")}, {"duration": 1.0, "texture": ExtResource("9")}, {"duration": 1.0, "texture": ExtResource("10")}, {"duration": 1.0, "texture": ExtResource("11")}],
+"loop": true, "name": &"andar", "speed": 9.0
+}, {
+"frames": [{"duration": 1.0, "texture": ExtResource("12")}, {"duration": 1.0, "texture": ExtResource("13")}, {"duration": 1.0, "texture": ExtResource("14")}, {"duration": 1.0, "texture": ExtResource("15")}],
+"loop": false, "name": &"atacar", "speed": 10.0
+}, {
+"frames": [{"duration": 1.0, "texture": ExtResource("16")}, {"duration": 1.0, "texture": ExtResource("17")}, {"duration": 1.0, "texture": ExtResource("18")}, {"duration": 1.0, "texture": ExtResource("19")}],
+"loop": false, "name": &"dano", "speed": 14.0
+}, {
+"frames": [{"duration": 1.0, "texture": ExtResource("20")}, {"duration": 1.0, "texture": ExtResource("21")}, {"duration": 1.0, "texture": ExtResource("22")}, {"duration": 1.0, "texture": ExtResource("23")}],
+"loop": false, "name": &"morte", "speed": 10.0
+}, {
+"frames": [{"duration": 1.0, "texture": ExtResource("2")}, {"duration": 1.0, "texture": ExtResource("3")}, {"duration": 1.0, "texture": ExtResource("4")}, {"duration": 1.0, "texture": ExtResource("5")}],
+"loop": true, "name": &"parado", "speed": 6.0
+}]
+
+[sub_resource type="RectangleShape2D" id="corpo"]
+size = Vector2(60, 44)
+
+[sub_resource type="RectangleShape2D" id="area"]
+size = Vector2(70, 50)
+
+[sub_resource type="CircleShape2D" id="visao"]
+radius = 280.0
+
+[sub_resource type="RectangleShape2D" id="garra"]
+size = Vector2(48, 46)
+
+[node name="Inimigo" type="CharacterBody2D"]
+collision_layer = 2
+collision_mask = 1
+script = ExtResource("1")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, -22)
+shape = SubResource("corpo")
+
+[node name="Anim" type="AnimatedSprite2D" parent="."]
+position = Vector2(0, -34)
+sprite_frames = SubResource("sf")
+animation = &"parado"
+autoplay = "parado"
+
+[node name="Borda" type="RayCast2D" parent="."]
+position = Vector2(32, -8)
+target_position = Vector2(0, 40)
+
+[node name="CorpoInimigo" type="Area2D" parent="."]
+collision_layer = 0
+collision_mask = 1
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="CorpoInimigo"]
+position = Vector2(0, -25)
+shape = SubResource("area")
+
+[node name="Visao" type="Area2D" parent="."]
+collision_layer = 0
+collision_mask = 1
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Visao"]
+position = Vector2(0, -30)
+shape = SubResource("visao")
+
+[node name="HitboxAtaque" type="Area2D" parent="."]
+position = Vector2(36, -26)
+collision_layer = 0
+collision_mask = 1
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HitboxAtaque"]
+shape = SubResource("garra")
+disabled = true
+
+[connection signal="body_entered" from="CorpoInimigo" to="." method="_on_corpo_inimigo_body_entered"]
+[connection signal="body_entered" from="Visao" to="." method="_on_visao_body_entered"]
+[connection signal="body_exited" from="Visao" to="." method="_on_visao_body_exited"]
+[connection signal="body_entered" from="HitboxAtaque" to="." method="_on_hitbox_ataque_body_entered"]

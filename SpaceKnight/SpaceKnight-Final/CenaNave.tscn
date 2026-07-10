@@ -1,0 +1,144 @@
+[gd_scene format=3 uid="uid://bkhuxv5rom7t6"]
+
+[ext_resource type="Script" uid="uid://13x2s6i27w3w" path="res://cena_nave.gd" id="1_6iit8"]
+[ext_resource type="Script" uid="uid://b882p37hjafpm" path="res://character_body_2d_nave.gd" id="1_e3idd"]
+[ext_resource type="Texture2D" uid="uid://dcmcisgui78dq" path="res://Arte/FundoEspa├ºo.png" id="2_aj3mx"]
+[ext_resource type="Texture2D" uid="uid://8iylpqrypol6" path="res://ship-sheet.png" id="2_g3hxh"]
+[ext_resource type="PackedScene" uid="uid://3ot1mi546sua" path="res://AsteroideCena.tscn" id="4_m3yir"]
+[ext_resource type="PackedScene" uid="uid://cciuii2705wnw" path="res://CenaTiroNave.tscn" id="5_oe2ed"]
+[ext_resource type="Script" uid="uid://blmv10rvvp4kv" path="res://hud_fase2.gd" id="8_j5bp8"]
+[ext_resource type="AudioStream" uid="uid://cswjq8dgc0qxf" path="res://Som/Musica_Fase1.mp3" id="8_p4oxt"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_m3yir"]
+size = Vector2(104, 102)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_miiii"]
+size = Vector2(104, 101)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_aj3mx"]
+size = Vector2(115.5, 1.0500022)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_j5bp8"]
+size = Vector2(28.8, 0.27499723)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_p4oxt"]
+size = Vector2(8.25, 321.5)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_wjai6"]
+size = Vector2(23.5, 644.5)
+
+[node name="Node2D" type="Node2D" unique_id=827086504]
+position = Vector2(-109, 90)
+script = ExtResource("1_6iit8")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1368053867]
+z_index = -2
+position = Vector2(685.00006, 233.00002)
+scale = Vector2(1.1250001, 1.0733334)
+texture = ExtResource("2_aj3mx")
+
+[node name="Nave" type="CharacterBody2D" parent="." unique_id=1078614421]
+position = Vector2(-62, -1)
+collision_mask = 5
+script = ExtResource("1_e3idd")
+metadata/_edit_group_ = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Nave" unique_id=450018162]
+position = Vector2(261, 216)
+shape = SubResource("RectangleShape2D_m3yir")
+
+[node name="Sprite2D" type="Sprite2D" parent="Nave" unique_id=1913239847]
+position = Vector2(256.69345, 215.68997)
+rotation = 1.5707964
+scale = Vector2(3.1348379, 3.4796593)
+texture = ExtResource("2_g3hxh")
+region_enabled = true
+region_rect = Rect2(95.66324, 0, 32.33676, 32)
+
+[node name="PontoDeTiro" type="Marker2D" parent="Nave" unique_id=348085185]
+position = Vector2(312, 215)
+
+[node name="HurtBox" type="Area2D" parent="Nave" unique_id=1098182828]
+collision_mask = 32
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Nave/HurtBox" unique_id=1866001623]
+position = Vector2(261, 215.5)
+shape = SubResource("RectangleShape2D_miiii")
+
+[node name="TiroNave_Cena" parent="." unique_id=1683016526 instance=ExtResource("5_oe2ed")]
+position = Vector2(-305, 608)
+
+[node name="Asteroide" parent="." unique_id=1568276614 instance=ExtResource("4_m3yir")]
+position = Vector2(1211, 123)
+collision_mask = 97
+
+[node name="TimerAsteroideHorizontal" type="Timer" parent="." unique_id=578733701]
+wait_time = 0.3
+autostart = true
+
+[node name="TimerFase" type="Timer" parent="." unique_id=1671775047]
+wait_time = 45.0
+one_shot = true
+autostart = true
+
+[node name="ParedeInvisivel" type="StaticBody2D" parent="." unique_id=570400571]
+position = Vector2(541, -238)
+collision_layer = 4
+metadata/_edit_group_ = true
+
+[node name="Cima" type="CollisionShape2D" parent="ParedeInvisivel" unique_id=1534819576]
+position = Vector2(144, 144.00002)
+scale = Vector2(10, 10)
+shape = SubResource("RectangleShape2D_aj3mx")
+
+[node name="Baixo" type="CollisionShape2D" parent="ParedeInvisivel" unique_id=613848063]
+position = Vector2(144, 798)
+scale = Vector2(40, 40)
+shape = SubResource("RectangleShape2D_j5bp8")
+
+[node name="Esquerda" type="CollisionShape2D" parent="ParedeInvisivel" unique_id=1200880240]
+position = Vector2(-441, 468)
+scale = Vector2(2, 2)
+shape = SubResource("RectangleShape2D_p4oxt")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="ParedeInvisivel" unique_id=965178907]
+position = Vector2(730.25, 471.75)
+shape = SubResource("RectangleShape2D_wjai6")
+
+[node name="HUD" type="CanvasLayer" parent="." unique_id=375309398]
+script = ExtResource("8_j5bp8")
+
+[node name="Coracao1" type="ColorRect" parent="HUD" unique_id=1734789534]
+offset_left = 20.0
+offset_top = 18.0
+offset_right = 52.0
+offset_bottom = 50.0
+color = Color(0.95, 0.15, 0.2, 1)
+
+[node name="Coracao2" type="ColorRect" parent="HUD" unique_id=365297795]
+offset_left = 60.0
+offset_top = 18.0
+offset_right = 92.0
+offset_bottom = 50.0
+color = Color(0.95, 0.15, 0.2, 1)
+
+[node name="Coracao3" type="ColorRect" parent="HUD" unique_id=1646614633]
+offset_left = 100.0
+offset_top = 18.0
+offset_right = 132.0
+offset_bottom = 50.0
+color = Color(0.95, 0.15, 0.2, 1)
+
+[node name="TimerAsteroideVertical" type="Timer" parent="." unique_id=373477702]
+wait_time = 0.7
+autostart = true
+
+[node name="MusicaN" type="AudioStreamPlayer" parent="." unique_id=1002231869]
+stream = ExtResource("8_p4oxt")
+
+[connection signal="naveDestruida" from="Nave" to="." method="_on_nave_nave_destruida"]
+[connection signal="tomouDano" from="Nave" to="." method="_on_nave_tomou_dano"]
+[connection signal="body_entered" from="Nave/HurtBox" to="Nave" method="_on_hurt_box_body_entered"]
+[connection signal="timeout" from="TimerAsteroideHorizontal" to="." method="_on_timer_asteroide_timeout"]
+[connection signal="timeout" from="TimerFase" to="." method="_on_timer_fase_timeout"]
+[connection signal="timeout" from="TimerAsteroideVertical" to="." method="_on_timer_asteroide_vertical_timeout"]

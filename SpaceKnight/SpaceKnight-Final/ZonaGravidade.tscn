@@ -1,0 +1,6 @@
+[gd_scene format=3 uid="uid://ck0zonagrav001"]
+
+[ext_resource type="Script" path="res://zona_gravidade.gd" id="1"]
+
+[node name="ZonaGravidade" type="Area2D"]
+script = ExtResource("1")
